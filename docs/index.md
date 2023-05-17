@@ -3,12 +3,12 @@ title: Home
 nav_order: 0
 ---
 
-# [Project Name]
+# [CODE CRUSADERS]
 [Project description]
 
 ## Team members
 
-### [Jane Dane]
+### [Anton Wagg]
 
 About
 : Some info about Jane
@@ -16,7 +16,7 @@ About
 Matr.-Nr.
 : 1234567
 
-### [Joe Doe]
+### [Tim Hötzel]
 
 About
 : Some info about Joe
