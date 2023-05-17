@@ -4,7 +4,7 @@ parent: Team Evaluation
 nav_order: 4
 ---
 
-[Jane Dane]
+[Anton Wagg]
 {: .label }
 
 # [Summary of individual contributions]
@@ -19,16 +19,16 @@ nav_order: 4
 {:toc}
 </details>
 
-## [Jane Dane]
+## [Anton Wagg]
 
 Contributions
-: Jane's first contribution
-: Jane's second contribution
+: Anton's first contribution
+: Anton's second contribution
 : ...
 
-## [Joe Doe]
+## [Tim Hötzel]
 
 Contributions
-: Joe's first contribution
-: Joe's second contribution
+: Tim's first contribution
+: Tim's second contribution
 : ...
