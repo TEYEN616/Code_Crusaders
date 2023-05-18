@@ -4,25 +4,25 @@ nav_order: 0
 ---
 
 # [CODE CRUSADERS]
-[Project description]
+[ Quizzapp]
 
 ## Team members
 
 ### [Anton Wagg]
 
 About
-: Some info about Jane
+: 
 
 Matr.-Nr.
-: 1234567
+: 77211922378
 
 ### [Tim Hötzel]
 
 About
-: Some info about Joe
+: 
 
 Matr.-Nr.
-: 1234567
+: 77211919611
 
 ## Eidesstattliche Erklärung
 

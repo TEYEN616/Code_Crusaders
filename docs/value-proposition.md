@@ -9,11 +9,7 @@ nav_order: 1
 # [Value proposition]
 {: .no_toc }
 
-<details open markdown="block">
-  <summary>
-    Table of contents
-  </summary>
-  {: .text-delta }
-- TOC
-{:toc}
-</details>
+Unsere Value proposition ist eine spielerische kognitive Übung. Wir wollen eine Umgebung schaffen, in der es Menschen spaß macht neue Dinge zu lernen   
+
+
+
