@@ -3,8 +3,11 @@ title: Value Proposition
 nav_order: 1
 ---
 
-[Jane Dane]
+[Anton Wagg]
 {: .label }
+
+[Tim Hötzel]
+{: .label .label-green }
 
 # [Value proposition]
 {: .no_toc }
