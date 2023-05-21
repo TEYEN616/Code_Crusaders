@@ -35,11 +35,12 @@ Finding a basic design and a consistent design that runs through the entire appl
 
 ### Decision
 
-![get_list_todos_sample](../assets/images/login_design_idea.png)
+![Login-Page](../assets/images/login_design_idea.png)
 
+![Login-Page](../assets/images/login_design_idea.png)
 
 ### Regarded options
 
-It is supposed to reflect "clouds" and the "sky". on the game side the clouds are moved/pushed away and replaced by a bright starry sky. The registration page should be full of clouds. This is to symbolize how the page is first locked and then opened in the game.
+It is supposed to reflect "clouds" and the "sky". on the game side the clouds are moved/pushed away and replaced by a bright starry sky. The registration page should be full of clouds. Thto is is symbolize how the page is first locked and then opened in the game.
 
 ---
