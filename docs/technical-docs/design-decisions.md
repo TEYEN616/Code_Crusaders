@@ -8,16 +8,6 @@ nav_order: 5
 {: .label .label-orange }
 
 # [Design decisions]
-{: .no_toc }
-
-<details open markdown="block">
-  <summary>
-    Table of contents
-  </summary>
-  {: .text-delta }
-- TOC
-{:toc}
-</details>
 
 ## 01: Login Design
 
@@ -35,9 +25,7 @@ Finding a basic design and a consistent design that runs through the entire appl
 
 ### Decision
 
-![Login-Page](../assets/images/login_design_idea.png)
-
-![Login-Page](../assets/images/login_design_idea.png)
+![get_lists() sample](../assets/images/login_design_idea.png)
 
 ### Regarded options
 
