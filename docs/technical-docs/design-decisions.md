@@ -19,23 +19,24 @@ nav_order: 5
 {:toc}
 </details>
 
-## 01: [Title]
+## 01: [Login Design]
 
-### Meta
+### First design idea
 
 Status
 : **Work in progress** - Decided - Obsolete
 
 Updated
-: DD-MMM-YYYY
+: 21.05.2023
 
 ### Problem statement
 
-[Describe the problem to be solved or the goal to be achieved. Include relevant context information.]
+Finding a basic design and a consistent design that runs through the entire application.
 
 ### Decision
 
-[Describe **which** design decision was taken for **what reason** and by **whom**.]
+![get_list_todos_sample](../assets/images/login_design_idea.png)
+
 
 ### Regarded options
 
