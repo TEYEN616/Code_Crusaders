@@ -4,8 +4,8 @@ parent: Technical Docs
 nav_order: 5
 ---
 
-[Jane Dane]
-{: .label }
+[Tim Hötzel]
+{: .label .label-orange }
 
 # [Design decisions]
 {: .no_toc }
@@ -19,12 +19,12 @@ nav_order: 5
 {:toc}
 </details>
 
-## 01: [Login Design]
+## 01: Login Design
 
 ### First design idea
 
 Status
-: **Work in progress** - Decided - Obsolete
+: **Work in progress** 
 
 Updated
 : 21.05.2023
@@ -40,6 +40,6 @@ Finding a basic design and a consistent design that runs through the entire appl
 
 ### Regarded options
 
-[Describe any possible design decision that will solve the problem. Assess these options, e.g., via a simple pro/con list.]
+It is supposed to reflect "clouds" and the "sky". on the game side the clouds are moved/pushed away and replaced by a bright starry sky. The registration page should be full of clouds. This is to symbolize how the page is first locked and then opened in the game.
 
 ---
