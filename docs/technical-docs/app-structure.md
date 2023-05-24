@@ -29,7 +29,7 @@ nav_order: 1
 
 **Purpose:** Login page is used to register in the game. Among other things, it is also possible to assign individual high scores to users
 
-**Sample output:**
 
+**Sample output:**
 ![Alt text](../assets/images/web-design.png)
 ---
