@@ -1,0 +1,26 @@
+*{
+    padding : 0;
+    margin: : 0;
+       
+}
+
+html{
+    height: 100%;
+}
+
+body{
+    height: 100%;
+    background-image: url(Login-Page.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    
+    float: right;
+}
+
