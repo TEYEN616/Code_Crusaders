@@ -7,7 +7,8 @@ nav_order: 1
 [Jane Dane]
 {: .label }
 
-# App structure, incl. context
+# [App structure, incl. context]
+{: .no_toc }
 
 <details open markdown="block">
   <summary>
