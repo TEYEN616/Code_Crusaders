@@ -31,3 +31,5 @@ nav_order: 1
 **Sample output:**
 
 ![Login](../assets/images/login_design_idea.png)
+
+---
