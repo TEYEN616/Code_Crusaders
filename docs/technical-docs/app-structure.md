@@ -45,5 +45,5 @@ nav_order: 1
 
 
 **Sample output:**
-![Alt texts](../assets/images/register-page.png)
+![Alt text](../assets/images/register-page.png)
 ---
