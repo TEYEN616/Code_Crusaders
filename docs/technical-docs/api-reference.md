@@ -27,7 +27,7 @@ nav_order: 4
 
 **Methods:** `POST` `GET` `PATCH` `PUT` `DELETE`
 
-**Purpose:** [Short explanationof what the fu nction does and why]
+**Purpose:** [Short explanation of what the function does and why]
 
 **Sample output:**
 
