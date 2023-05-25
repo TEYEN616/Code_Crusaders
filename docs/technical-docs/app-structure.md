@@ -32,6 +32,7 @@ nav_order: 1
 
 **Sample output:**
 ![Alt text](../assets/images/web-design.png)
+
 ---
 
 ## Register 
@@ -46,4 +47,5 @@ nav_order: 1
 
 **Sample output:**
 ![Alt text](../assets/images/register-page.png)
+
 ---
