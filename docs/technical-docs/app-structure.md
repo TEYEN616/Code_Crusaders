@@ -40,7 +40,7 @@ nav_order: 1
 
 ## Register 
 
-**Route:** TBd
+**Route:** TBD
 
 **Methods:** `GET` `PUT`
 
