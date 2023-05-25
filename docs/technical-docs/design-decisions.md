@@ -25,7 +25,7 @@ Finding a basic design and a consistent design that runs through the entire appl
 
 ### Decision
 
-![get_lists() sample](../assets/images/login_design_idea.png)
+![get_lists() sample](../assets/images/login-page.png)
 
 ### Regarded options
 
