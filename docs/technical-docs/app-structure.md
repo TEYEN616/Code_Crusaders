@@ -4,8 +4,11 @@ parent: Technical Docs
 nav_order: 1
 ---
 
-[Jane Dane]
+[Anton Wagg]
 {: .label }
+
+[Tim Hötzel]
+{: .label .label-green }
 
 # [App structure, incl. context]
 {: .no_toc }
