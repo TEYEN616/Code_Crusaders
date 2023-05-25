@@ -31,7 +31,7 @@ nav_order: 1
 
 
 **Sample output:**
-![Alt text](../assets/images/web-design.png)
+![Alt text](../assets/images/login-page.png)
 
 --------
 
