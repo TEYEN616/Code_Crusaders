@@ -33,3 +33,17 @@ nav_order: 1
 **Sample output:**
 ![Alt text](../assets/images/web-design.png)
 ---
+
+## Register 
+
+**Route:** TBD
+
+**Methods:** `GET` `PUT`
+
+**Purpose:** This is used to register your account, if you don't yet have one. Here the user is supposed to fill all the information which is need for a register. <br>
+             The information gathered from the user is saved in the Database.
+
+
+**Sample output:**
+![Alt texts](../assets/images/register-page.png)
+---
