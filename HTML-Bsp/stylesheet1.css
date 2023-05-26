@@ -1,6 +1,6 @@
 *{
     padding : 0;
-    margin: : 0;
+    margin:  0;
        
 }
 
@@ -24,3 +24,28 @@ body{
     float: right;
 }
 
+.navigation {
+    width: 300px;
+    padding: 20px;
+     /* Positionierung anpassen */
+    position: absolute;
+    top: 40%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+  }
+  
+  
+.navigation input [type="text"],
+.navigation input [type="password"] {
+    width: 100%;
+    padding: 11px;
+    margin-bottom: 10px;
+  }
+  
+.navigation button {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+  }
