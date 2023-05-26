@@ -35,8 +35,8 @@ body{
   }
   
   
-.navigation input [type="text"],
-.navigation input [type="password"] {
+.navigation input[type="text"],
+.navigation input[type="password"] {
     width: 100%;
     padding: 11px;
     margin-bottom: 10px;
