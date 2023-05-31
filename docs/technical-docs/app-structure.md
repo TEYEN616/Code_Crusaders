@@ -4,13 +4,13 @@ parent: Technical Docs
 nav_order: 1
 ---
 
-[Anton Wagg]
+Anton Wagg
 {: .label }
 
-[Tim Hötzel]
+Tim Hötzel
 {: .label .label-green }
 
-# [App structure, incl. context]
+# App structure, incl. context
 {: .no_toc }
 
 <details open markdown="block">
@@ -22,7 +22,7 @@ nav_order: 1
 {:toc}
 </details>
 
-## [Login / module]
+## Login / module
 
 **Route:** TBD
 
@@ -33,10 +33,10 @@ nav_order: 1
 
 **Sample output:**
 ![Alt text](../assets/images/login-page.png)
-
+![Alt text](../assets/images/web-design.png)
 --------
 
-## [Register] 
+## Register
 
 **Route:** TBD (To Be Decided)
 
@@ -51,7 +51,7 @@ nav_order: 1
 
 --------
 
-## [Game / Homepage] 
+## Game / Homepage
 
 **Route:** TBD
 
@@ -62,7 +62,7 @@ nav_order: 1
 
 **Sample output:**
 
-------
+--------
 
 ## [Game / Highscore]
 

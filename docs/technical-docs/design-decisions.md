@@ -4,10 +4,10 @@ parent: Technical Docs
 nav_order: 5
 ---
 
-[Tim Hötzel]
+Tim Hötzel
 {: .label .label-orange }
 
-# [Design decisions]
+# Design decisions
 
 ## 01: Login Design
 
