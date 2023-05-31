@@ -3,12 +3,12 @@ title: Home
 nav_order: 0
 ---
 
-# [CODE CRUSADERS]
-[ Quizzapp]
+# CODE CRUSADERS
+    Quizzapp
 
 ## Team members
 
-### [Anton Wagg]
+### Anton Wagg
 
 About
 : 
@@ -16,7 +16,7 @@ About
 Matr.-Nr.
 : 77211922378
 
-### [Tim Hötzel]
+### Tim Hötzel
 
 About
 : 

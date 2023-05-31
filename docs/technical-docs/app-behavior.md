@@ -7,7 +7,7 @@ nav_order: 2
 [Jane Dane]
 {: .label }
 
-# [App behavior]
+# App behavior
 {: .no_toc }
 
 <details open markdown="block">

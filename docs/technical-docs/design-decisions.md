@@ -4,10 +4,10 @@ parent: Technical Docs
 nav_order: 5
 ---
 
-[Tim Hötzel]
+Tim Hötzel
 {: .label .label-orange }
 
-# [Design decisions]
+# Design decisions
 
 ## 01: Login Design
 
@@ -23,11 +23,16 @@ Updated
 
 Finding a basic design and a consistent design that runs through the entire application.
 
-### Decision
+### Regarded options
 
 ![get_lists() sample](../assets/images/login-page.png)
+![Alt text](../assets/images/web-design.png)
 
-### Regarded options
+### Decision (as of yet)
+![get_lists() sample](../assets/images/login-page.png)
+![Alt text](../assets/images/register-page.png)
+
+### Reasoning / Intention
 
 It is supposed to reflect "clouds" and the "sky". on the game side the clouds are moved/pushed away and replaced by a bright starry sky. The registration page should be full of clouds. Thto is is symbolize how the page is first locked and then opened in the game.
 
