@@ -7,7 +7,7 @@ nav_order: 1
 Anton Wagg
 {: .label }
 
-Tim Hötzel
+Tim Hötzel 
 {: .label .label-green }
 
 # App structure, incl. context
