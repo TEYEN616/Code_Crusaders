@@ -1,27 +1,24 @@
-<!-- gameloop.html -->
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Quiz</title>
-</head>
-<body>
-    <h1>Quiz</h1>
-    <form action="/check_answer" method="POST">
-        {% for question in questions %}
-        <h2>Frage {{ loop.index }}</h2>
-        <p>{{ question.question }}</p>
-        {% for option in question.options %}
-        <label>
-            <input type="radio" name="{{ question.id }}" value="{{ option }}" required>
-            {{ option }}
-        </label><br>
-        {% endfor %}
-        <br>
-        {% endfor %}
-        <input type="submit" value="Weiter">
+  <head>
+    <title>Quiz App</title>
+  </head>
+  <body>
+    <h1>Quiz App</h1>
+    <h2>{{ question.question }}</h2>
+    <form action="/" method="POST">
+      {% if message %}
+        <p>{{ message }}</p>
+      {% endif %}
+      {% for option in question.options %}
+        <input type="radio" name="answer" value="{{ loop.index }}" required> {{ option }}<br>
+      {% endfor %}
+      <input type="hidden" name="question_index" value="{{ question_index }}">
+      <input type="submit" value="Antworten">
     </form>
-</body>
+  </body>
 </html>
+
 
 
 
