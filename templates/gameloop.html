@@ -1,0 +1,27 @@
+<!-- gameloop.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz</title>
+</head>
+<body>
+    <h1>Quiz</h1>
+    <form action="/check_answer" method="POST">
+        {% for question in questions %}
+        <h2>Frage {{ loop.index }}</h2>
+        <p>{{ question.question }}</p>
+        {% for option in question.options %}
+        <label>
+            <input type="radio" name="{{ question.id }}" value="{{ option }}" required>
+            {{ option }}
+        </label><br>
+        {% endfor %}
+        <br>
+        {% endfor %}
+        <input type="submit" value="Weiter">
+    </form>
+</body>
+</html>
+
+
+
