@@ -18,3 +18,26 @@ nav_order: 2
 - TOC
 {:toc}
 </details>
+
+## Sign-Up and Log-In
+
+---
+
+## Highscore Displayment
+
+---
+
+## Score Calculation
+
+---
+
+## Score Updates
+
+---
+
+## Highscore DB Updates
+
+---
+
+
+
