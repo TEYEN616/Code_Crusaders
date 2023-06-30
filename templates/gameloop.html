@@ -6,7 +6,7 @@
   <body>
     <h1>Quiz App</h1>
     <h2>{{ question.question }}</h2>
-    <form action="/" method="POST">
+    <form action="/gameloop/{{ question.id }}" method="POST">
       {% if message %}
         <p>{{ message }}</p>
       {% endif %}
@@ -18,7 +18,3 @@
     </form>
   </body>
 </html>
-
-
-
-
