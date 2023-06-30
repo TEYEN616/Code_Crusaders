@@ -10,10 +10,12 @@
 <body>
     <div class="Menu">
         <div>
-            <a href="">Start Game </a>
+            <form action="{{ url_for('gameloop', question_id=1) }}" method="POST">
+                <button type="submit">Start Game</button>
+            </form>
         </div>
         <div>
-            <a href=""> Highscores</a>
+            <a href="">Highscores</a>
         </div>
         <div>
             <a href="">Konto Infos</a>
