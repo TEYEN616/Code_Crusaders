@@ -44,11 +44,15 @@ def gameloop(question_id):
             user_answer = request.form['answer']
             correct_answer = question["answer"]
             if str(user_answer) == str(correct_answer):
-                return redirect(url_for('gameloop', question_id=question_id + 1))
+                message = "Richtig!"
+                return redirect(url_for('gameloop', question_id=question_id + 1, message=message))
             else:
-                return redirect(url_for('gameloop', question_id=question_id))
+                message = "Falsch!"
+                return redirect(url_for('gameloop', question_id=question_id, message=message))
         else:
-            return render_template('gameloop.html', question=question, question_index=question_id)
+            message = ""
+            return render_template('gameloop.html', question=question, question_index=question_id, message="Dies ist eine Testnachricht")
+
     else:
         return redirect(url_for('index'))
 
@@ -87,4 +91,7 @@ def homepage():
 if __name__ == '__main__':
     app.run(debug=True)
 
-##test
+##Punkte zähler
+##Richtig und falsch message 
+##mehr fragen
+

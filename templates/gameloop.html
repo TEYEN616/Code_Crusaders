@@ -6,10 +6,10 @@
   <body>
     <h1>Quiz App</h1>
     <h2>{{ question.question }}</h2>
+    {% if message %}
+      <p>{{ message }}</p>
+    {% endif %}
     <form action="/gameloop/{{ question.id }}" method="POST">
-      {% if message %}
-        <p>{{ message }}</p>
-      {% endif %}
       {% for option in question.options %}
         <input type="radio" name="answer" value="{{ loop.index }}" required> {{ option }}<br>
       {% endfor %}
