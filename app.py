@@ -7,19 +7,22 @@ app = Flask(__name__)
 # Fragen und Antworten in einer Liste
 quiz = [
     {
+        "id" : 1,
         "question": "Was ist die Hauptstadt von Frankreich?",
         "options": ["Madrid", "Paris", "Berlin", "London"],
-        "answer": "Paris"
+        "answer": "2"
     },
     {
+        "id" : 2,
         "question": "Wie viele Planeten hat unser Sonnensystem?",
         "options": ["7", "8", "9", "10"],
-        "answer": "8"
+        "answer": "2"
     },
     {
+        "id" : 3,
         "question": "Was ist die Hauptstadt von Kanada?",
         "options": ["Ottawa", "Toronto", "Montreal", "Vancouver"],
-        "answer": "Ottawa"
+        "answer": "1"
     }
 ] 
 
@@ -31,32 +34,24 @@ app.config.from_mapping(
 
 @app.route('/')
 def index():
-    return redirect(url_for('logIn'))
+    return redirect(url_for('gameloop', question_id = 1)) ##logIn
 
-@app.route('/gameloop', methods=['Get', 'POST'])
-def quiz_app():
-    if request.method == 'POST':
-        user_answer = request.form['answer']
-        question_index = int(request.form.get('question_index', 0))
-        question = quiz[question_index]
-        if user_answer == "":
-            return render_template('gameloop.html', question=question, message="Zeit abgelaufen! Die Frage wurde übersprungen.")
-        elif question["options"][int(user_answer) - 1] == question["answer"]:
-            return render_template('gameloop.html', question=question, message="Richtig!", score=1)
+@app.route('/gameloop/<int:question_id>', methods=['GET', 'POST'])
+def gameloop(question_id):
+    question = next((q for q in quiz if q["id"] == question_id), None)
+    if question:
+        if request.method == 'POST' and 'answer' in request.form:
+            user_answer = request.form['answer']
+            correct_answer = question["answer"]
+            if str(user_answer) == str(correct_answer):
+                return redirect(url_for('gameloop', question_id=question_id + 1))
+            else:
+                return redirect(url_for('gameloop', question_id=question_id))
         else:
-            return render_template('gameloop.html', question=question, message=f"Falsch! Die richtige Antwort ist {question['answer']}.")
+            return render_template('gameloop.html', question=question, question_index=question_id)
     else:
-        random.shuffle(quiz)
-        return render_template('gameloop.html', question=quiz[0])
+        return redirect(url_for('index'))
 
-
-@app.route('/check_answer', methods=['POST'])
-def check_answer():
-    answer = request.form['answer']
-    # Perform answer validation here
-    # ...
-
-    return redirect(url_for('index'))    
     
 @app.route('/signup', methods=['GET','POST'])
 def signup():
@@ -82,6 +77,13 @@ def logIn():
 
         return render_template('login-page.html')   
   
+@app.route ('/homepage', methods=['GET','POST'])
+def homepage():
+    if request.method == 'POST':
+        return redirect(url_for('gameloop', question_id=1))
+    else:
+        return render_template('homepage.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
 
