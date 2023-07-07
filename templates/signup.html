@@ -11,11 +11,12 @@
         </header>
         
         <h1>
-        <form action="{{ url_for('signup') }}" method="POST">
-            <input type="text" name="email" placeholder="Enter your E-Mail"><br>
-            <input type="text" name="username" placeholder="Enter your Username"><br>
-            <input type="password" name="password" placeholder="Enter your Password"><br>
-            <input type="password" name="confirm_password" placeholder="Confirm your Password"><br>
+            <form action="{{ url_for('signup') }}" method="POST">
+                {{ form.csrf_token }}
+                {{ form.username }}<br>
+                {{ form.email }}<br>
+                {{ form.password }}<br>
+                
             <input type="submit" value="Sign Up">
         
         </form>

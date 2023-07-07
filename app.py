@@ -1,6 +1,9 @@
 import os
+
 from flask import Flask, render_template, redirect, url_for, request, session
-import random
+from flask_wtf import FlaskForm
+from wtforms.fields import StringField, SubmitField, PasswordField, EmailField
+from wtforms.validators import InputRequired, Length
 
 app = Flask(__name__)
 
@@ -91,11 +94,20 @@ app.config.from_mapping(
     SECRET_KEY='secret_key_just_for_dev_environment',
     DATABASE=os.path.join(app.instance_path, 'todos.sqlite')
 )
+class LoginForm(FlaskForm):
+    username = StringField('username', validators=[InputRequired(), Length(min=4, max= 15),])
+    password = PasswordField('password', validators=[InputRequired(), Length (min=8, max=80)])
+    SubmitField= SubmitField('Log In')
 
 
-@app.route('/')
+class SignUpForm(FlaskForm):
+    email=EmailField('email', validators=[InputRequired(), Length(max=50)])
+    username = StringField('username', validators=[InputRequired(), Length(min=4, max= 15),])
+    password = PasswordField('password', validators=[InputRequired(), Length (min=8, max=80)])
+
+@app.route('/', methods=['GET', 'POST'])
 def index():
-    return redirect(url_for('gameloop', question_id = 1)) ##logIn
+        return redirect(url_for('logIn'))
 
 
 @app.route('/gameloop/<int:question_id>', methods=['GET', 'POST'])
@@ -127,6 +139,7 @@ def gameloop(question_id):
     
 @app.route('/signup', methods=['GET','POST'])
 def signup():
+        form=SignUpForm()
         if request.method == 'POST':
             email = request.form.get('email')
             username= request.form.get('username')
@@ -134,18 +147,21 @@ def signup():
             password= request.form.get('confirm_password')
 
             return redirect(url_for('index'))
-        
-        return render_template ('signup.html')
+        else:
+            return render_template ('signup.html', form=form)
 
 @app.route ('/logIn', methods=['GET','POST'])
 def logIn(): 
-        if request.method == 'POST':
-            username= request.form.get('username')
-            password= request.form.get('password') 
-            
-            return redirect(url_for('signup'))
+    form=LoginForm()
+    if request.method == 'POST':
+        username=request.form.get('username')
+        password=request.form.get('password')
 
-        return render_template('login-page.html')   
+        return redirect(url_for('homepage'))
+        ##session['logged_in'] = True
+        
+    else:
+        return render_template('login-page.html',form=form) 
   
 @app.route ('/homepage', methods=['GET','POST'])
 def homepage():
