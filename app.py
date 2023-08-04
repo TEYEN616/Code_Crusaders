@@ -1,163 +1,153 @@
-import os
-from flask import Flask, render_template, redirect, url_for, request, session
+from flask import Flask, render_template, request, redirect
+import sqlite3
 import random
 
 app = Flask(__name__)
 
-# Fragen und Antworten in einer Liste
-quiz = [
-    
-    {
-        "id": 1,
-        "question": "Wie heißt die größte Wüste der Welt?",
-        "options": ["Gobi-Wüste", "Atacama-Wüste", "Sahara-Wüste", "Taklamakan-Wüste"],
-        "answer": "3"
-    },
-    {
-        "id": 2,
-        "question": "Welches ist das längste Flussystem der Welt?",
-        "options": ["Nil", "Mississippi", "Amazonas", "Jangtse"],
-        "answer": "3"
-    },
-    {
-        "id": 3,
-        "question": "Welche Farbe hat die Schale einer Zitrone?",
-        "options": ["Grün", "Gelb", "Orange", "Weiß"],
-        "answer": "2"
-    },
-    {
-        "id": 4,
-        "question": "Welche ist die größte Insel der Welt?",
-        "options": ["Grönland", "Neuguinea", "Borneo", "Madagaskar"],
-        "answer": "1"
-    },
-    {
-        "id": 5,
-        "question": "Welcher Planet ist der vierte in unserem Sonnensystem?",
-        "options": ["Mars", "Venus", "Jupiter", "Saturn"],
-        "answer": "1"
-    },
-    {
-        "id": 6,
-        "question": "Wie viele Elemente enthält das Periodensystem?",
-        "options": ["98", "105", "118", "124"],
-        "answer": "3"
-    },
-    {
-        "id": 7,
-        "question": "Welches Land hat die längste Küstenlinie der Welt?",
-        "options": ["Russland", "Kanada", "Australien", "Brasilien"],
-        "answer": "2"
-    },
-    {
-        "id": 8,
-        "question": "Wie viele Kontinente gibt es auf der Erde?",
-        "options": ["5", "6", "7", "8"],
-        "answer": "3"
-    },
-    {
-        "id": 9,
-        "question": "Wer hat die Relativitätstheorie entwickelt?",
-        "options": ["Isaac Newton", "Albert Einstein", "Max Planck", "Nikola Tesla"],
-        "answer": "2"
-    },
-    {
-        "id": 10,
-        "question": "Wie viele Milliliter sind in einem Liter?",
-        "options": ["100", "500", "1000", "1500"],
-        "answer": "3"
-    },
-    {
-        "id" : 11,
-        "question": "Was ist die Hauptstadt von Frankreich?",
-        "options": ["Madrid", "Paris", "Berlin", "London"],
-        "answer": "2"
-    },
-    {
-        "id" : 12,
-        "question": "Wie viele Planeten hat unser Sonnensystem?",
-        "options": ["7", "8", "9", "10"],
-        "answer": "2"
-    },
-    {
-        "id" : 13,
-        "question": "Was ist die Hauptstadt von Kanada?",
-        "options": ["Ottawa", "Toronto", "Montreal", "Vancouver"],
-        "answer": "1"
-    }
-] 
+def reset_quiz():
+    conn = sqlite3.connect('quiz.db')
+    cursor = conn.cursor()
 
-app.config.from_mapping(
-    SECRET_KEY='secret_key_just_for_dev_environment',
-    DATABASE=os.path.join(app.instance_path, 'todos.sqlite')
-)
+    cursor.execute('UPDATE questions SET answered = 0')
+    conn.commit()
 
+    conn.close()
 
-@app.route('/')
+def initialize_score():
+    conn = sqlite3.connect('quiz.db')
+    cursor = conn.cursor()
+
+    cursor.execute('''CREATE TABLE IF NOT EXISTS scores (
+                        id INTEGER PRIMARY KEY,
+                        score INTEGER DEFAULT 0
+                    )''')
+
+    cursor.execute('SELECT * FROM scores')
+    existing_score = cursor.fetchone()
+
+    if not existing_score:
+        cursor.execute('INSERT INTO scores (score) VALUES (?)', (0,))
+        conn.commit()
+
+    conn.close()
+
+def update_score():
+    conn = sqlite3.connect('quiz.db')
+    cursor = conn.cursor()
+
+    cursor.execute('SELECT score FROM scores')
+    current_score = cursor.fetchone()
+
+    if current_score:
+        score = current_score[0] + 1
+
+        cursor.execute('UPDATE scores SET score = ?', (score,))
+        conn.commit()
+
+    conn.close()
+
+@app.route('/', methods=['GET', 'POST'])
 def index():
-    return redirect(url_for('gameloop', question_id = 1)) ##logIn
-
-
-@app.route('/gameloop/<int:question_id>', methods=['GET', 'POST'])
-def gameloop(question_id):
-    question = next((q for q in quiz if q["id"] == question_id), None)
-    
-    if question:
-        if request.method == 'POST' and 'answer' in request.form:
-            user_answer = request.form['answer']
-            correct_answer = question["answer"]
-            
-            if str(user_answer) == str(correct_answer):
-                message = "Richtig!"
-                next_question_id = question_id + 1
-                next_question = next((q for q in quiz if q["id"] == next_question_id), None)
-                if next_question:
-                    return render_template('gameloop.html', question=next_question, question_index=next_question_id, message=message)
-                else:
-                    return redirect(url_for('index'))
-            else:
-                message = "Falsch!"
-                return render_template('gameloop.html', question=question, question_index=question_id, message=message)
-        else:
-            message = ""
-            return render_template('gameloop.html', question=question, question_index=question_id, message=message)
-    else:
-        return redirect(url_for('index'))
-
-    
-@app.route('/signup', methods=['GET','POST'])
-def signup():
-        if request.method == 'POST':
-            email = request.form.get('email')
-            username= request.form.get('username')
-            password= request.form.get('password')
-            password= request.form.get('confirm_password')
-
-            return redirect(url_for('index'))
-        
-        return render_template ('signup.html')
-
-@app.route ('/logIn', methods=['GET','POST'])
-def logIn(): 
-        if request.method == 'POST':
-            username= request.form.get('username')
-            password= request.form.get('password') 
-            
-            return redirect(url_for('signup'))
-
-        return render_template('login-page.html')   
-  
-@app.route ('/homepage', methods=['GET','POST'])
-def homepage():
     if request.method == 'POST':
-        return redirect(url_for('gameloop', question_id=1))
+        return redirect('/quiz') 
+    
+    return render_template('homepage.html')
+
+@app.route('/homepage')
+def homepage():
+    return render_template('homepage.html')
+
+
+@app.route('/quiz', methods=['GET', 'POST'])
+def quiz():
+    conn = sqlite3.connect('quiz.db')
+    cursor = conn.cursor()
+
+    if request.method == 'POST':
+        question_id = request.form['question_id']
+        user_answer = request.form['answer']
+
+        cursor.execute('SELECT * FROM questions WHERE id = ?', (question_id,))
+        question = cursor.fetchone()
+
+        if question and user_answer == str(question[6]):
+            message = "Richtig!"
+            update_score()  
+        else:
+            message = "Falsch!"
     else:
-        return render_template('homepage.html')
+        message = None
+
+    cursor.execute('SELECT score FROM scores')
+    current_score = cursor.fetchone()
+    score = current_score[0] if current_score else 0
+
+    cursor.execute('SELECT * FROM questions WHERE answered = 0')
+    questions = cursor.fetchall()
+
+    if not questions:
+        reset_quiz()
+
+        cursor.execute('UPDATE scores SET score = 0')
+        conn.commit()
+
+        conn.close()
+
+        return redirect('/homepage') 
+
+    question = random.choice(questions)
+
+    cursor.execute('UPDATE questions SET answered = 1 WHERE id = ?', (question[0],))
+    conn.commit()
+
+    conn.close()
+
+    return render_template('quiz.html', question=question, message=message, score=score)
+
+@app.route('/gkquiz', methods=['GET', 'POST'])
+def gkquiz():
+    print("Entered gkquiz route.")
+    conn = sqlite3.connect('quiz.db')
+    cursor = conn.cursor()
+    
+    if request.method == 'POST':
+        print("Form submitted.")
+        question_id = request.form['question_id']
+        user_answer = request.form['answer']
+
+        cursor.execute('SELECT * FROM questions WHERE id = ?', (question_id,))
+        question = cursor.fetchone()
+        
+        if question and user_answer == str(question[6]):
+            message = "Richtig!"
+        else:
+            message = "Falsch!"
+    else:
+        message = None
+   
+    cursor.execute('SELECT * FROM questions WHERE answered = 0')
+    questions = cursor.fetchall()
+    
+    if not questions:
+        reset_quiz()
+
+        cursor.execute('UPDATE scores SET score = 0')
+        conn.commit()
+
+        conn.close()
+
+        return redirect('/homepage')  
+
+    question = random.choice(questions)
+
+    cursor.execute('UPDATE questions SET answered = 1 WHERE id = ?', (question[0],))
+    conn.commit()
+
+    conn.close()
+
+    return render_template('genQuiz.html', question=question, message=message)
+
 
 if __name__ == '__main__':
-    app.run(debug=True)
-
-##Punkte zähler
-##Richtig und falsch message 
-##mehr fragen
-
+    initialize_score()
+    app.run()
