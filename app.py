@@ -1,5 +1,5 @@
-from flask import Flask, render_template, request, redirect
-import sqlite3
+import os
+from flask import Flask, render_template, redirect, url_for, request, session
 import random
 
 app = Flask(__name__)
@@ -41,15 +41,21 @@ def update_score():
     if current_score:
         score = current_score[0] + 1
 
-        cursor.execute('UPDATE scores SET score = ?', (score,))
-        conn.commit()
+app.config.from_mapping(
+    SECRET_KEY='secret_key_just_for_dev_environment',
+    DATABASE=os.path.join(app.instance_path, 'todos.sqlite')
+)
 
     conn.close()
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
 def index():
-    if request.method == 'POST':
-        return redirect('/quiz') 
+    return redirect(url_for('gameloop', question_id = 1)) ##logIn
+
+
+@app.route('/gameloop/<int:question_id>', methods=['GET', 'POST'])
+def gameloop(question_id):
+    question = next((q for q in quiz if q["id"] == question_id), None)
     
     return render_template('homepage.html')
 
@@ -91,25 +97,31 @@ def quiz():
         cursor.execute('UPDATE scores SET score = 0')
         conn.commit()
 
-        conn.close()
-
-        return redirect('/homepage') 
-
-    question = random.choice(questions)
-
-    cursor.execute('UPDATE questions SET answered = 1 WHERE id = ?', (question[0],))
-    conn.commit()
-
-    conn.close()
-
-    return render_template('quiz.html', question=question, message=message, score=score)
-
-@app.route('/gkquiz', methods=['GET', 'POST'])
-def gkquiz():
-    print("Entered gkquiz route.")
-    conn = sqlite3.connect('quiz.db')
-    cursor = conn.cursor()
     
+@app.route('/signup', methods=['GET','POST'])
+def signup():
+        if request.method == 'POST':
+            email = request.form.get('email')
+            username= request.form.get('username')
+            password= request.form.get('password')
+            password= request.form.get('confirm_password')
+
+            return redirect(url_for('index'))
+        
+        return render_template ('signup.html')
+
+@app.route ('/logIn', methods=['GET','POST'])
+def logIn(): 
+        if request.method == 'POST':
+            username= request.form.get('username')
+            password= request.form.get('password') 
+            
+            return redirect(url_for('signup'))
+
+        return render_template('login-page.html')   
+  
+@app.route ('/homepage', methods=['GET','POST'])
+def homepage():
     if request.method == 'POST':
         print("Form submitted.")
         question_id = request.form['question_id']
