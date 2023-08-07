@@ -1,8 +1,22 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, redirect, url_for, request, session
+from flask_wtf import FlaskForm
+from wtforms.fields import StringField, SubmitField, PasswordField, EmailField, StringField, PasswordField, SubmitField
+from wtforms.validators import InputRequired, Length, DataRequired, Email, EqualTo
 import sqlite3
 import random
 
 app = Flask(__name__)
+
+class LoginForm(FlaskForm):
+    username = StringField('username', validators=[InputRequired(), Length(min=4, max= 15),])
+    password = PasswordField('password', validators=[InputRequired(), Length (min=8, max=80)])
+    SubmitField= SubmitField('Log In')
+
+class SignUpForm(FlaskForm):
+    email=EmailField('email', validators=[InputRequired(), Length(max=50)])
+    username = StringField('Username', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    submit = SubmitField('Sign Up')
 
 def reset_quiz():
     conn = sqlite3.connect('quiz.db')
@@ -57,14 +71,28 @@ def update_score():
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    if request.method == 'POST':
-        return redirect('/quiz') 
-    
-    return render_template('homepage.html')
+    return redirect(url_for('logIn'))
 
-@app.route('/homepage')
+@app.route('/signup', methods=['GET','POST'])
+def signup():
+        form=SignUpForm()
+        if request.method == 'POST':
+            email = request.form.get('email')
+            username= request.form.get('username')
+            password= request.form.get('password')
+            insert_user(email,username,password)
+            return redirect(url_for('logIn'))
+
+        else:   
+            return render_template ('signup.html', form=form)
+        
+
+@app.route('/homepage', methods=['GET', 'POST'])
 def homepage():
-    return render_template('homepage.html')
+    if request.method=='POST':
+        return redirect(url_for('/quiz'))
+    else:
+        return render_template('homepage.html')
 
 
 @app.route('/quiz', methods=['GET', 'POST'])
