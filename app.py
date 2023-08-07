@@ -50,6 +50,15 @@ def initialize_score():
 
     conn.close()
 
+#User in DB einsetzen
+def insert_user(email, username, password):
+        conn = sqlite3.connect('quiz.db')
+        cursor = conn.cursor()
+        cursor.execute('INSERT INTO users (email, username, password) VALUES (?, ?, ?)', (email, username, password))
+        conn.commit()
+        conn.close()
+
+
 # Score aktualisieren
 def update_score():
     conn = sqlite3.connect('quiz.db')
