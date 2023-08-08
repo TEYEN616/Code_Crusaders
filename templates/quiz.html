@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rush Quiz</title>
+</head>
+<body>
+    <h1>Rush Quiz</h1>
+    {% if question %}
+    <form action="/quiz" method="post">
+        <h3>{{ question[1] }}</h3>
+        <ul>
+          <li><input type="radio" name="answer" value="1"> {{ question[2] }}</li>
+          <li><input type="radio" name="answer" value="2"> {{ question[3] }}</li>
+          <li><input type="radio" name="answer" value="3"> {{ question[4] }}</li>
+          <li><input type="radio" name="answer" value="4"> {{ question[5] }}</li>
+        </ul>
+        <input type="hidden" name="question_id" value="{{ question[0] }}">
+        <input type="submit" value="Antworten">
+    </form>
+    {% if message %}
+    <p>{{ message }}</p>
+    {% endif %}
+    <p>Score: {{ score }}</p>
+    {% else %}
+    <p>Congratulations! You have completed the Specific Quiz.</p>
+    <a href="/homepage">Go back to the homepage</a>
+    {% endif %}
+</body>
+</html>

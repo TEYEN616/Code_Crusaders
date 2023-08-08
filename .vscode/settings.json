@@ -1,6 +1,12 @@
 {
     "[python]": {
-        "editor.defaultFormatter": "ms-python.python"
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        },
     },
-    "python.formatting.provider": "none"
+    "isort.args": ["--profile", "black"],
+    "terminal.integrated.defaultProfile.windows": "Command Prompt",
+    "files.autoSave": "afterDelay"
 }
