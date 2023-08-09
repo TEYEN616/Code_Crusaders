@@ -178,7 +178,7 @@ def quiz():
     conn.close()
 
     return render_template(
-        "rushquiz.html", question=question, message=message, score=score
+        "quiz.html", question=question, message=message, score=score
     )
 
 
