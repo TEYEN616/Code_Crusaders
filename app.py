@@ -6,124 +6,94 @@ from flask_wtf import FlaskForm
 from wtforms.fields import EmailField, PasswordField, StringField, SubmitField
 from wtforms.validators import DataRequired, Email, EqualTo, InputRequired, Length
 
-app = Flask(__name__)
+from db import initialize_score, insert_user, reset_quiz, update_score
 
-"""
+app = Flask(__name__)
+app.secret_key = "34"
+
+
 class LoginForm(FlaskForm):
-    username = StringField('username', validators=[InputRequired(), Length(min=4, max= 15),])
-    password = PasswordField('password', validators=[InputRequired(), Length (min=8, max=80)])
-    SubmitField= SubmitField('Log In')
+    username = StringField(
+        "username",
+        validators=[
+            InputRequired(),
+            Length(min=4, max=15),
+        ],
+    )
+    password = PasswordField(
+        "password", validators=[InputRequired(), Length(min=8, max=80)]
+    )
+    SubmitField = SubmitField("Log In")
+
 
 class SignUpForm(FlaskForm):
-    email=EmailField('email', validators=[InputRequired(), Length(max=50)])
-    username = StringField('Username', validators=[DataRequired()])
-    password = PasswordField('Password', validators=[DataRequired()])
-    submit = SubmitField('Sign Up')
-"""
-
-
-def reset_quiz():
-    conn = sqlite3.connect("quiz.db")
-    cursor = conn.cursor()
-
-    # Markierung der beantworteten Fragen entfernen
-    cursor.execute("UPDATE questions SET answered = 0")
-    conn.commit()
-
-    # Verbindung zur Datenbank schließen
-    conn.close()
-
-
-def initialize_score():
-    conn = sqlite3.connect("quiz.db")
-    cursor = conn.cursor()
-
-    # Tabelle 'scores' erstellen, wenn sie nicht existiert
-    cursor.execute(
-        """CREATE TABLE IF NOT EXISTS scores (
-                        id INTEGER PRIMARY KEY,
-                        score INTEGER DEFAULT 0
-                    )"""
-    )
-
-    # Prüfen, ob bereits ein Eintrag in der Tabelle vorhanden ist
-    cursor.execute("SELECT * FROM scores")
-    existing_score = cursor.fetchone()
-
-    if not existing_score:
-        # Kein Eintrag vorhanden, wir setzen den Punktestand auf 0
-        cursor.execute("INSERT INTO scores (score) VALUES (?)", (0,))
-        conn.commit()
-
-    conn.close()
-
-
-# User in DB einsetzen
-def insert_user(email, username, password):
-    conn = sqlite3.connect("quiz.db")
-    cursor = conn.cursor()
-    cursor.execute(
-        "INSERT INTO users (email, username, password) VALUES (?, ?, ?)",
-        (email, username, password),
-    )
-    conn.commit()
-    conn.close()
-
-
-# Score aktualisieren
-def update_score():
-    conn = sqlite3.connect("quiz.db")
-    cursor = conn.cursor()
-
-    # Punktestand aus der Datenbank abrufen
-    cursor.execute("SELECT score FROM scores")
-    current_score = cursor.fetchone()
-
-    if current_score:
-        # Punktestand erhöhen
-        score = current_score[0] + 1
-
-        # Punktestand in der Datenbank aktualisieren
-        cursor.execute("UPDATE scores SET score = ?", (score,))
-        conn.commit()
-
-    conn.close()
+    email = EmailField("email", validators=[InputRequired(), Length(max=50)])
+    username = StringField("Username", validators=[DataRequired()])
+    password = PasswordField("Password", validators=[DataRequired()])
+    submit = SubmitField("Sign Up")
 
 
 @app.route("/", methods=["GET", "POST"])
 def index():
-    # return redirect(url_for('logIn'))
-    if request.method == "POST":
-        return redirect("/quiz")
-
-    return render_template("homepage.html")
+    return redirect(url_for("logIn"))
 
 
-"""
-@app.route('/signup', methods=['GET','POST'])
+## if request.method == "POST":
+##     return redirect("/quiz")
+
+##return render_template("homepage.html")
+
+
+@app.route("/logIn", methods=["GET", "POST"])
+def logIn():
+    form = LoginForm()
+    if (
+        request.method == "POST"
+    ):  # wird ausgeführt wenn man auf den log in button drückt
+        username = request.form.get("username")
+        password = request.form.get("password")
+        # daten aus der Datenbank holen
+        conn = sqlite3.connect("quiz.db")
+        cursor = conn.cursor()
+        cursor.execute(
+            "SELECT * FROM users WHERE username= ? AND password= ?",
+            (username, password),
+        )
+        user = cursor.fetchone()
+        conn.close()
+
+        if user:
+            session["user_id"] = user[0]  # user id in session speichern
+            session.permanent = True
+            return redirect(url_for("homepage"))
+        else:
+            return redirect(url_for("logIn"))
+    else:
+        return render_template("login-page.html", form=form)
+
+
+@app.route("/signup", methods=["GET", "POST"])
 def signup():
-        form=SignUpForm()
-        if request.method == 'POST':
-            email = request.form.get('email')
-            username= request.form.get('username')
-            password= request.form.get('password')
-            insert_user(email,username,password)
-            return redirect(url_for('logIn'))
+    form = SignUpForm()
+    if request.method == "POST":
+        email = request.form.get("email")
+        username = request.form.get("username")
+        password = request.form.get("password")
+        insert_user(email, username, password)
+        return redirect(url_for("logIn"))
 
-        else:   
-            return render_template ('signup.html', form=form)
-"""
+    else:
+        return render_template("signup.html", form=form)
 
 
 @app.route("/homepage", methods=["GET", "POST"])
 def homepage():
-    """
-    if request.method=='POST':
-        return redirect(url_for('/quiz'))
+    if request.method == "POST":
+        return redirect(url_for("/quiz"))
     else:
-        return render_template('homepage.html')
-    """
-    return render_template("homepage.html")
+        return render_template("homepage.html")
+
+    # return render_template("homepage.html")
 
 
 @app.route("/quiz", methods=["GET", "POST"])
@@ -178,7 +148,7 @@ def quiz():
     conn.close()
 
     return render_template(
-        "quiz.html", question=question, message=message, score=score
+        "rushquiz.html", question=question, message=message, score=score
     )
 
 
