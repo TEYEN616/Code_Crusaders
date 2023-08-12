@@ -65,7 +65,7 @@ def logIn():
         if user:
             session["user_id"] = user[0]  # user id in session speichern
             session.permanent = True
-            return redirect(url_for("homepage"))
+            return redirect(url_for("homepage_subjects"))
         else:
             return redirect(url_for("logIn"))
     else:
@@ -84,6 +84,14 @@ def signup():
 
     else:
         return render_template("signup.html", form=form)
+
+
+@app.route("/homepage_subjects", methods=["GET", "POST"])
+def homepage_subjects():
+    if request.method == "POST":
+        return redirect(url_for("homepage"))
+    else:
+        return render_template("homepage_Subjects.html")
 
 
 @app.route("/homepage", methods=["GET", "POST"])
