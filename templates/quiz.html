@@ -5,8 +5,9 @@
 </head>
 <body>
     <h1>Rush Quiz</h1>
+    <div class="countdown">Time: <span id="timer">10</span> seconds</div>
     {% if question %}
-    <form action="/quiz" method="post">
+    <form id="quiz-form" action="/quiz" method="post"> <!-- Hier wurde die ID hinzugefügt -->
         <h3>{{ question[1] }}</h3>
         <ul>
           <li><input type="radio" name="answer" value="1"> {{ question[2] }}</li>
@@ -25,5 +26,42 @@
     <p>Congratulations! You have completed the Specific Quiz.</p>
     <a href="/homepage">Go back to the homepage</a>
     {% endif %}
+
+    <script>
+        const timerElement = document.getElementById("timer");
+        const formElement = document.getElementById("quiz-form");
+    
+        let timeLeft = 10; 
+        let timerInterval;
+    
+        function startTimer() {
+            timerInterval = setInterval(function () {
+                timeLeft--;
+                timerElement.textContent = timeLeft;
+    
+                if (timeLeft === 0) {
+                    clearInterval(timerInterval);
+                    endQuiz();
+                }
+            }, 1000);
+        }
+    
+        function resetTimer() {
+            clearInterval(timerInterval);
+            timeLeft = 10;
+            timerElement.textContent = timeLeft;
+        }
+    
+        function endQuiz() {
+            alert("Time's up! Quiz ended.");
+            formElement.submit(); 
+        }
+    
+        formElement.addEventListener("submit", function (event) {
+            clearInterval(timerInterval); 
+        });
+    
+        startTimer(); 
+    </script>
 </body>
 </html>
