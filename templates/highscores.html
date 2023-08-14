@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<head>
+    <title>Highscores</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+
+</head>
+<body>
+    <h1>Highscores</h1>
+    <table>
+        <tr>
+            <th>Benutzername</th>
+            <th>Höchster Punktestand</th>
+        </tr>
+        {% for username, max_score in high_scores %}
+            <tr>
+                <td>{{ username }}</td>
+                <td>{{ max_score }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+
+</html>

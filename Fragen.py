@@ -31,10 +31,13 @@ cursor.execute(
 # Neu -----------------------------------------
 cursor.execute(
     """CREATE TABLE IF NOT EXISTS scores (
-                    id INTEGER PRIMARY KEY,
-                    score INTEGER
-                )"""
+                        id INTEGER PRIMARY KEY,
+                        user_id INTEGER,
+                        score INTEGER DEFAULT 0,
+                        FOREIGN KEY (user_id) REFERENCES users (id)
+                    )"""
 )
+
 # Neu -----------------------------------------
 questions = [
     {

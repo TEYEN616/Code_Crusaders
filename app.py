@@ -6,10 +6,11 @@ from flask_wtf import FlaskForm
 from wtforms.fields import EmailField, PasswordField, StringField, SubmitField
 from wtforms.validators import DataRequired, Email, EqualTo, InputRequired, Length
 
-from db import initialize_score, insert_user, reset_quiz, update_score
+from db import insert_user, reset_quiz, save_score
 
 app = Flask(__name__)
 app.secret_key = "34"
+current_score = 0
 
 
 class LoginForm(FlaskForm):
@@ -109,6 +110,7 @@ def quiz():
     conn = sqlite3.connect("quiz.db")
     cursor = conn.cursor()
 
+    global current_score
     if request.method == "POST":
         question_id = request.form["question_id"]
         user_answer = request.form["answer"]
@@ -119,16 +121,11 @@ def quiz():
 
         if question and user_answer == str(question[6]):
             message = "Richtig!"
-            update_score()  # Punktestand aktualisieren
+            current_score = current_score + 1
         else:
             message = "Falsch!"
     else:
         message = None
-
-    # Punktestand aus der Datenbank abrufen
-    cursor.execute("SELECT score FROM scores")
-    current_score = cursor.fetchone()
-    score = current_score[0] if current_score else 0
 
     # Alle unbeantworteten Fragen aus der Datenbank abrufen
     cursor.execute("SELECT * FROM questions WHERE answered = 0")
@@ -138,13 +135,11 @@ def quiz():
         # Alle Fragen wurden beantwortet, das Quiz startet von vorne
         reset_quiz()
 
-        # Punktestand auf 0 zurücksetzen
-        cursor.execute("UPDATE scores SET score = 0")
-        conn.commit()
+        save_score(session["user_id"], current_score)  # Punktestand speichern
 
-        conn.close()
+        current_score = 0
 
-        return redirect("/homepage")  # Weiterleitung zur Homepage
+        return redirect("/highscores")  # Weiterleitung zur highscore seite
 
     # Eine zufällige Frage auswählen
     question = random.choice(questions)
@@ -156,7 +151,7 @@ def quiz():
     conn.close()
 
     return render_template(
-        "rushquiz.html", question=question, message=message, score=score
+        "quiz.html", question=question, message=message, score=current_score
     )
 
 
@@ -209,6 +204,21 @@ def gkquiz():
     return render_template("gkQuiz.html", question=question, message=message)
 
 
+@app.route("/highscores", methods=["GET"])
+def highscores():
+    conn = sqlite3.connect("quiz.db")
+    cursor = conn.cursor()
+
+    # Höchste Punktestände für jeden Benutzer abrufen
+    cursor.execute(
+        "SELECT username, MAX(score) FROM users JOIN scores ON users.id = scores.user_id GROUP BY users.id"
+    )
+    high_scores = cursor.fetchall()
+
+    conn.close()
+
+    return render_template("highscores.html", high_scores=high_scores)
+
+
 if __name__ == "__main__":
-    initialize_score()  # Punktestand initialisieren
     app.run()
