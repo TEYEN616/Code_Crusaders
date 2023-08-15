@@ -4,17 +4,24 @@ parent: Team Evaluation
 nav_order: 1
 ---
 
-[Jane Dane]
-{: .label }
+Tim Hötzel 
+{: .label .label-green }
 
-# [Goals achieved and missed]
-{: .no_toc }
+# Goals achieved and missed (not developed)
+- **Login & Register**
+- **Working WebApp & Quiz Strukture**
+- **General Knowlage Mode**
+- **Rush Mode**
 
 <details open markdown="block">
   <summary>
-    Table of contents
+    Not Developed
   </summary>
-  {: .text-delta }
-- TOC
-{:toc}
+  <ul>
+    <li>Password Reset</li>
+    <li>Track Progress</li>
+    <li>Multiplayer Function</li>
+    <li>Create Questions</li>
+    <li>Different School Subjects</li>
+  </ul>
 </details>

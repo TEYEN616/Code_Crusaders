@@ -7,28 +7,18 @@ nav_order: 4
 Anton Wagg
 {: .label }
 
-# [Summary of individual contributions]
-{: .no_toc }
+Tim Hötzel 
+{: .label .label-green }
 
-<details open markdown="block">
-  <summary>
-    Table of contents
-  </summary>
-  {: .text-delta }
-- TOC
-{:toc}
-</details>
+# [Summary of individual contributions]
+
+Difficult to say, we've been collaborating a lot on Discord and also coding together also patching and researching each other
 
 ## Anton Wagg
 
-Contributions
-: Anton's first contribution
-: Anton's second contribution
-: ...
+Contributions: Login/Register & Highscore & CSS (Quiz Design)
+
 
 ## Tim Hötzel
 
-Contributions
-: Tim's first contribution
-: Tim's second contribution
-: ...
+Contributions: Gameloop & tamplates & Timer & first Design (old Login)

@@ -7,17 +7,10 @@ nav_order: 3
 Anton Wagg
 {: .label }
 
-# Data model
-{: .no_toc }
+Tim Hötzel 
+{: .label .label-green }
 
-<details open markdown="block">
-  <summary>
-    Table of contents
-  </summary>
-  {: .text-delta }
-- TOC
-{:toc}
-</details>
+# Data model
 
 ## User related Tables 
 
@@ -27,10 +20,10 @@ Anton Wagg
 |  int        | String    | String   | String  |
 
 
-**Results:**
-| #user_ID | #score   | 
-| -------- | -------- | 
-| int      | int      | 
+**Results (Highscore):**
+| #id      | #user_ID | #score   | 
+| -------- | -------- | -------- | 
+| int      | int      | int      | 
 
 ---
 ## Quiz Questions

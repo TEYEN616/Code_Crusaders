@@ -4,62 +4,129 @@ parent: Technical Docs
 nav_order: 4
 ---
 
-[Jane Dane]
-{: .label }
+Tim Hötzel 
+{: .label .label-green }
 
-# [API reference]
-{: .no_toc }
+# API reference
 
-<details open markdown="block">
-  <summary>
-    Table of contents
-  </summary>
-  {: .text-delta }
-- TOC
-{:toc}
-</details>
+## Navigation / Index
 
-## [Section / module]
+### `index()`
 
-### `function_definition()`
+**Route:** `/`
 
-**Route:** `/route/`
+**Methods:** `POST` `GET` 
 
-**Methods:** `POST` `GET` `PATCH` `PUT` `DELETE`
+**Purpose:** [Short explanation of what the function does and why]
+
+**Sample output:** NONE
+
+---
+## Login / Login
+
+### `logIn()`
+
+**Route:** `/logIn`
+
+**Methods:** `POST` `GET`
+
+**Purpose:** Login for existing users and forwarding to register
+
+**Sample output:**
+Shows the login screen with input fields for the registration and a SignUp button.
+
+
+---
+## Login / Register
+
+### `signup()`
+
+**Route:** `/signup`
+
+**Methods:** `POST` `GET`
 
 **Purpose:** [Short explanation of what the function does and why]
 
 **Sample output:**
 
-[Show an image, string output, or similar illustration -- or write NONE if function generates no output]
+Shows a registration form.
 
 ---
+## Navigation / Subjects
 
-## [Example, delete this section] Show to-do lists
+### `homepage_subjects()`
 
-### `get_lists()`
+**Route:** `/homepage_subjects`
 
-**Route:** `/lists/`
+**Methods:** `POST` `GET`
 
-**Methods:** `GET`
-
-**Purpose:** Show all to-do lists.
+**Purpose:** (Select subjects for specific learning)
 
 **Sample output:**
 
-![get_lists() sample](../assets/images/login_design_idea.png)
+Shows a few buttons as a subject selection
 
 ---
+## Navigation / Mode selection
 
-### `get_list_todos(list_id)`
+### `homepage()`
 
-**Route:** `/lists/<int:list_id>`
+**Route:** `/homepage`
 
-**Methods:** `GET`
+**Methods:** `POST` `GET`
 
-**Purpose:** Retrieve all to-do items of to-do list with ID `list_id` from database and present to user.
+**Purpose:** Choice between the two implemented game modes
 
 **Sample output:**
+
+Two buttons with Rush and General Knowlage
+
+---
+## Quiz / Rush
+
+### `quiz()`
+
+**Route:** `/quiz`
+
+**Methods:** `POST` `GET`
+
+**Purpose:** gameloop
+
+**Sample output:**
+
+Shows a question, timer, score, answer button and whether the question was answered correctly or incorrectly.
+
+---
+## Quiz / General knowlage
+
+### `gkquiz()`
+
+**Route:** `/gkquiz`
+
+**Methods:** `POST` `GET`
+
+**Purpose:** gameloop
+
+**Sample output:**
+
+Shows a question, answer button and whether the question was answered correctly or incorrectly.
+
+---
+## Highscore
+
+### `highscore()`
+
+**Route:** `/highscore`
+
+**Methods:** `POST` `GET`
+
+**Purpose:** List of high scores
+
+**Sample output:**
+
+Table with user entries and their highest score.
+
+---
 
 ![get_list_todos() sample](../assets/images/fswd-intro_02.png)
 
