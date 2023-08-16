@@ -11,14 +11,14 @@ nav_order: 1
 
 # Value proposition
 
-**Prepare For Future Success**
+**Support For Future Success**
 - Our quiz web app not only helps students achieve academic success, but also instills critical thinking skills, problem-solving skills and a drive for lifelong learning. It prepares them for future success in a rapidly changing world.
 
 **Flexible Learning**
 - Learning should not be limited to the classroom. Our quiz web app is accessible anytime, anywhere, so students can learn at their own pace and in comfort.
 
-**Personal Challenges**
-- Offer personalized quizzes that help students identify their individual strengths and weaknesses and target improvement.
+**Challenges and Competition**
+- The high score motivates the player to try harder and also to outbid his friends. It is also a confirmation that you are making progress in learning, for example.
 
 
 # Buyer Persona
