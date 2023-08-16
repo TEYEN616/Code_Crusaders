@@ -9,25 +9,31 @@
     <body>
     
         <div class="navigation">
-            
+            <div class="login-container">
         
-            <h1>
-                <form action="{{ url_for('logIn') }}" method="POST">
-                    {{ form.csrf_token }}
-                    {{ form.username }}
-                    {{ form.password }}
-                    <input type="submit" value="Log In">
-
-<!--                    <div>
-                    <button>Anmelden</button>
-                </div>-->
-                <div>
-                    <a href="{{ url_for('signup') }}" class="signup-link">Sign Up</a>
-                </div>
+                <h1>
+                    <form action="{{ url_for('logIn') }}" method="POST">
+                        {{ form.csrf_token }}
                     
-                </form>
-            </h1>
-         </div>
+                        <div>
+                            <label>Username:</label>
+                            {{ form.username }}
+                        </div>
+                        <div>
+                            <label>Password:</label>
+                            {{ form.password }}
+                        </div>
+
+                        <input type="submit" value="Log In">
+
+                    <div>
+                        <a href="{{ url_for('signup') }}" class="signup-link">Sign Up</a>
+                    </div>
+                    
+                    </form>
+                </h1>
+            </div>
+        </div>
     </body>    
     
 </html>
