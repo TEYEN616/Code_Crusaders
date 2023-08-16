@@ -2,31 +2,59 @@
 <html>
 <head>
     <title>Rush Quiz</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
 </head>
 <body>
-    <h1>Rush Quiz</h1>
-    <div class="countdown">Time: <span id="timer">10</span> seconds</div>
-    {% if question %}
-    <form id="quiz-form" action="/quiz" method="post"> <!-- Hier wurde die ID hinzugefügt -->
-        <h3>{{ question[1] }}</h3>
-        <ul>
-          <li><input type="radio" name="answer" value="1"> {{ question[2] }}</li>
-          <li><input type="radio" name="answer" value="2"> {{ question[3] }}</li>
-          <li><input type="radio" name="answer" value="3"> {{ question[4] }}</li>
-          <li><input type="radio" name="answer" value="4"> {{ question[5] }}</li>
-        </ul>
-        <input type="hidden" name="question_id" value="{{ question[0] }}">
-        <input type="submit" value="Antworten">
-    </form>
-    {% if message %}
-    <p>{{ message }}</p>
-    {% endif %}
-    <p>Score: {{ score }}</p>
-    {% else %}
-    <p>Congratulations! You have completed the Specific Quiz.</p>
-    <a href="/homepage">Go back to the homepage</a>
-    {% endif %}
-
+    <div class="quiz-container">
+        <h1>Rush Quiz</h1>
+        <div class="quiz-info">
+            <div class="countdown">Time: <span id="timer">10</span> seconds</div>
+            <div class="score">Score: {{ score }}</div>
+        </div>
+        {% if question %}
+        <form id="quiz-form" action="/quiz" method="post"> 
+            <h3>{{ question[1] }}</h3>
+            <ul class="answer-options">
+                <li>
+                    <label class="answer-option">
+                        <input type="radio" id="option1" name="answer" value="1">
+                        <span class="custom-radio"></span> 
+                        {{ question[2] }}
+                    </label>
+                </li>
+                <li>
+                    <label class="answer-option">
+                        <input type="radio" id="option2" name="answer" value="2">
+                        <span class="custom-radio"></span> 
+                        {{ question[3] }}
+                    </label>
+                </li>
+                <li>
+                    <label class="answer-option">
+                        <input type="radio" id="option3" name="answer" value="3">
+                        <span class="custom-radio"></span> 
+                        {{ question[4] }}
+                    </label>
+                </li>
+                <li>
+                    <label class="answer-option">
+                        <input type="radio" id="option4" name="answer" value="4">
+                        <span class="custom-radio"></span> 
+                        {{ question[5] }}
+                    </label>
+                </li>
+            </ul>
+            <input type="hidden" name="question_id" value="{{ question[0] }}">
+            <input type="submit" value="Antworten" class="submit-button">
+        </form>
+        {% if message %}
+        <p class="message {% if correct %}correct{% else %}incorrect{% endif %}">{{ message }}</p>
+        {% endif %}
+        {% else %}
+        <p>Congratulations! You have completed the Specific Quiz.</p>
+        <a href="/homepage">Go back to the homepage</a>
+        {% endif %}
+    </div>
     <script>
         const timerElement = document.getElementById("timer");
         const formElement = document.getElementById("quiz-form");
