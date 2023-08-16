@@ -21,7 +21,7 @@ Tim Hötzel
 
 **Sample output:** NONE
 
----
+
 ## Login / Login
 
 ### `logIn()`
@@ -36,7 +36,7 @@ Tim Hötzel
 Shows the login screen with input fields for the registration and a SignUp button.
 
 
----
+
 ## Login / Register
 
 ### `signup()`
@@ -51,7 +51,7 @@ Shows the login screen with input fields for the registration and a SignUp butto
 
 Shows a registration form.
 
----
+
 ## Navigation / Subjects
 
 ### `homepage_subjects()`
@@ -66,7 +66,7 @@ Shows a registration form.
 
 Shows a few buttons as a subject selection
 
----
+
 ## Navigation / Mode selection
 
 ### `homepage()`
@@ -81,7 +81,7 @@ Shows a few buttons as a subject selection
 
 Two buttons with Rush and General Knowlage
 
----
+
 ## Quiz / Rush
 
 ### `quiz()`
@@ -96,7 +96,7 @@ Two buttons with Rush and General Knowlage
 
 Shows a question, timer, score, answer button and whether the question was answered correctly or incorrectly.
 
----
+
 ## Quiz / General knowlage
 
 ### `gkquiz()`
@@ -111,7 +111,7 @@ Shows a question, timer, score, answer button and whether the question was answe
 
 Shows a question, answer button and whether the question was answered correctly or incorrectly.
 
----
+
 ## Highscore
 
 ### `highscore()`
@@ -126,22 +126,4 @@ Shows a question, answer button and whether the question was answered correctly 
 
 Table with user entries and their highest score.
 
----
 
-![get_list_todos() sample](../assets/images/fswd-intro_02.png)
-
----
-
-## [Example, delete this section] Insert sample data
-
-### `run_insert_sample()`
-
-**Route:** `/insert/sample`
-
-**Methods:** `GET`
-
-**Purpose:** Flush the database and insert sample data set
-
-**Sample output:**
-
-Browser shows: `Database flushed and populated with some sample data.`
