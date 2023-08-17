@@ -14,6 +14,7 @@ current_score = 0
 
 
 class LoginForm(FlaskForm):
+    # Felder für die Anmeldung
     username = StringField(
         "username",
         validators=[
@@ -28,17 +29,20 @@ class LoginForm(FlaskForm):
 
 
 class SignUpForm(FlaskForm):
+    # Felder für die Registrierung
     email = EmailField("email", validators=[InputRequired(), Length(max=50)])
     username = StringField("Username", validators=[DataRequired()])
     password = PasswordField("Password", validators=[DataRequired()])
     submit = SubmitField("Sign Up")
 
 
+# Indexroute, leitet auf den Login um
 @app.route("/", methods=["GET", "POST"])
 def index():
     return redirect(url_for("logIn"))
 
 
+# Loginroute
 @app.route("/logIn", methods=["GET", "POST"])
 def logIn():
     form = LoginForm()
@@ -67,6 +71,7 @@ def logIn():
         return render_template("login-page.html", form=form)
 
 
+# Registerroute
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
     form = SignUpForm()
@@ -81,6 +86,7 @@ def signup():
         return render_template("signup.html", form=form)
 
 
+# Startseite für den Benutzer
 @app.route("/homepage", methods=["GET", "POST"])
 def homepage():
     if request.method == "POST":
@@ -89,6 +95,7 @@ def homepage():
         return render_template("homepage.html")
 
 
+# Rush Quizroute
 @app.route("/quiz", methods=["GET", "POST"])
 def quiz():
     conn = sqlite3.connect("quiz.db")
@@ -117,7 +124,7 @@ def quiz():
     else:
         message = None
 
-    # Alle unbeantworteten Fragen aus der Datenbank abrufen
+    # alle unbeantworteten Fragen aus der Datenbank abrufen
     cursor.execute("SELECT * FROM questions WHERE answered = 0")
     questions = cursor.fetchall()
 
@@ -145,6 +152,7 @@ def quiz():
     )
 
 
+# Quizroute für allgemeines Wissen
 @app.route("/gkquiz", methods=["GET", "POST"])
 def gkquiz():
     print("Entered gkquiz route.")
@@ -194,6 +202,7 @@ def gkquiz():
     return render_template("gkQuiz.html", question=question, message=message)
 
 
+# Anzeigen der höchsten Punktzahl
 @app.route("/highscores", methods=["GET"])
 def highscores():
     conn = sqlite3.connect("quiz.db")
