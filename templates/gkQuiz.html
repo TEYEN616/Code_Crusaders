@@ -41,13 +41,14 @@
                     </li>
                 </ul>
                 <input type="hidden" name="question_id" value="{{ question[0] }}">
-                <button type="submit" class="submit-button">Antworten</button>
+                <button type="submit" class="submit-button">Answer</button>
             </form>
             {% if message %}
             <div class="message {% if correct %}correct{% else %}incorrect{% endif %}">
                 <p>{{ message }}</p>
             </div>
             {% endif %}
+            <a href="/homepage" class="homepage-link">Zurück zur Homepage</a> <!--Link zur Homepage -->
             {% else %}
             <p>Congratulations! You have completed the General Knowledge Quiz.</p>
             <a href="/homepage">Go back to the homepage</a>
