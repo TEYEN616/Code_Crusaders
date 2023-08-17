@@ -224,7 +224,7 @@ questions = [
 
 for question in questions:
     cursor.execute(
-        """INSERT INTO questions (id, question, option1, option2, option3, option4, answer, answered)
+        """INSERT OR IGNORE INTO questions (id, question, option1, option2, option3, option4, answer, answered)
                       VALUES (?, ?, ?, ?, ?, ?, ?, 0)""",
         (
             question["id"],

@@ -190,7 +190,7 @@ def gkquiz():
 
         return redirect("/homepage")
 
-    # Eine zufällige Frage auswählen
+    # Eine zufällige Frage auswählen, falls es unbeantwortete Fragen gibt
     question = random.choice(questions)
 
     # Frage als beantwortet markieren
