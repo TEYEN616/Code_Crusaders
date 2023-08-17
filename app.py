@@ -39,12 +39,6 @@ def index():
     return redirect(url_for("logIn"))
 
 
-## if request.method == "POST":
-##     return redirect("/quiz")
-
-##return render_template("homepage.html")
-
-
 @app.route("/logIn", methods=["GET", "POST"])
 def logIn():
     form = LoginForm()
@@ -87,24 +81,12 @@ def signup():
         return render_template("signup.html", form=form)
 
 
-"""
-@app.route("/homepage_subjects", methods=["GET", "POST"])
-def homepage_subjects():
-    if request.method == "POST":
-        return redirect(url_for("homepage"))
-    else:
-        return render_template("homepage_Subjects.html")
-"""
-
-
 @app.route("/homepage", methods=["GET", "POST"])
 def homepage():
     if request.method == "POST":
         return redirect(url_for("/quiz"))
     else:
         return render_template("homepage.html")
-
-    # return render_template("homepage.html")
 
 
 @app.route("/quiz", methods=["GET", "POST"])
@@ -114,18 +96,24 @@ def quiz():
 
     global current_score
     if request.method == "POST":
-        question_id = request.form["question_id"]
-        user_answer = request.form["answer"]
+        if "question_id" in request.form and "answer" in request.form:
+            question_id = request.form["question_id"]
+            user_answer = request.form["answer"]
 
-        # Frage aus der Datenbank abrufen
-        cursor.execute("SELECT * FROM questions WHERE id = ?", (question_id,))
-        question = cursor.fetchone()
+            # Frage aus der Datenbank abrufen
+            cursor.execute("SELECT * FROM questions WHERE id = ?", (question_id,))
+            question = cursor.fetchone()
 
-        if question and user_answer == str(question[6]):
-            message = "Richtig!"
-            current_score = current_score + 1
-        else:
-            message = "Falsch!"
+            if question and user_answer == str(question[6]):
+                message = "Richtig!"
+                current_score = current_score + 1
+            else:
+                message = "Falsch!"
+        else:  # neu
+            save_score(session["user_id"], current_score)
+            current_score = 0
+            conn.close()
+            return redirect("/highscores")
     else:
         message = None
 
@@ -192,7 +180,7 @@ def gkquiz():
 
         conn.close()
 
-        return redirect("/homepage")  # Weiterleitung zur Homepage
+        return redirect("/homepage")
 
     # Eine zufällige Frage auswählen
     question = random.choice(questions)

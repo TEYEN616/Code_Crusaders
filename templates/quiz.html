@@ -8,7 +8,7 @@
     <div class="quiz-container">
         <h1>Rush Quiz</h1>
         <div class="quiz-info">
-            <div class="countdown">Time: <span id="timer">10</span> seconds</div>
+            <div class="countdown">Time: <span id="timer">5</span> seconds</div>
             <div class="score">Score: {{ score }}</div>
         </div>
         {% if question %}
@@ -55,11 +55,12 @@
         <a href="/homepage">Go back to the homepage</a>
         {% endif %}
     </div>
+
     <script>
         const timerElement = document.getElementById("timer");
         const formElement = document.getElementById("quiz-form");
     
-        let timeLeft = 10; 
+        let timeLeft = 5; 
         let timerInterval;
     
         function startTimer() {
@@ -76,13 +77,14 @@
     
         function resetTimer() {
             clearInterval(timerInterval);
-            timeLeft = 10;
+            timeLeft = 5;
             timerElement.textContent = timeLeft;
         }
     
         function endQuiz() {
             alert("Time's up! Quiz ended.");
-            formElement.submit(); 
+            formElement.submit();
+            
         }
     
         formElement.addEventListener("submit", function (event) {
@@ -91,5 +93,6 @@
     
         startTimer(); 
     </script>
+    
 </body>
 </html>
