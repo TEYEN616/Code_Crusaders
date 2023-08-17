@@ -14,21 +14,22 @@ Tim Hötzel
 
 ## User related Tables 
 
-**User:**
-|  #user_ID fk| username  | password | confirm_password|
-| --------    | --------  | -------- | --------|
-|  int        | String    | String   | String  |
+**Questions Table:**
+
+| id  | question | option1 | option2 | option3 | option4 | answer | answered |
+| --- | -------- | ------- | ------- | ------- | ------- | ------ | -------- |
+| int | text     | text    | text    | text    | text    | int    | int      |
+
+**Users Table:**
+
+| id  | email | username | password |
+| --- | ----- | -------- | -------- |
+| int | text  | text     | text     |
+
+**Scores Table:**
+
+| id  | user_id | score | 
+| --- | ------- | ------ |
+| int | int     | int    |
 
 
-**Results (Highscore):**
-| #id      | #user_ID | #score   | 
-| -------- | -------- | -------- | 
-| int      | int      | int      | 
-
----
-## Quiz Questions
-
-**Questions:**
-|  question_ID | question | answer_a | answer_b| answer_c | answer_d|
-| -------- | -------- | -------- | -------- | ------- | -------|
-| int      | string   | string   | string   | string  | string |
