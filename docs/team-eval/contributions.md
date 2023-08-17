@@ -10,7 +10,7 @@ Anton Wagg
 Tim Hötzel 
 {: .label .label-green }
 
-# [Summary of individual contributions]
+# Summary of individual contributions
 
 Difficult to say, we've been collaborating a lot on Discord and also coding together also patching and researching each other
 

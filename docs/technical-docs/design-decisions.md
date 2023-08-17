@@ -9,9 +9,9 @@ Tim Hötzel
 
 # Design decisions
 
-## 01: Login Design
+## 01: First Ideas
 
-### First design idea
+
 
 Status
 : **Work in progress** 
@@ -37,3 +37,13 @@ Finding a basic design and a consistent design that runs through the entire appl
 It is supposed to reflect "clouds" and the "sky". on the game side the clouds are moved/pushed away and replaced by a bright starry sky. The registration page should be full of clouds. Thto is is symbolize how the page is first locked and then opened in the game.
 
 ---
+
+## 02: Final Design
+
+We haven't thought about our design for a long time. When we wanted to start at that point, we didn't like the stand. We opted for a much simpler design.
+
+![Alt text](../assets/images/login.JPG)
+
+![Alt text](../assets/images/generalKnowlage.JPG)
+
+These two design examples show what our design looks like. We wanted to keep it simple and stick to one design and relieve ourselves of the work on this point as well.
