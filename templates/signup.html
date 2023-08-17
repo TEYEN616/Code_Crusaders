@@ -1,34 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="../static/css/signUp.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
 </head>
 <body>
-    <div class="signup-container">
+    <div class="quiz-container">
         <header>
             <h1>Sign Up</h1>
         </header>
-
-        <div class="form-container">
             <form action="{{ url_for('signup') }}" method="POST">
                 {{ form.csrf_token }}
 
-                <div>
-                    <label>Username:</label>
+                <div class="input-group">
+                    <label for="username">Username:</label>
                     {{ form.username }}
                 </div>
-                <div>
-                    <label>E-Mail:</label>
+                <div class="input-group">
+                    <label for="email">E-Mail:</label>
                     {{ form.email }}
                 </div>
-                <div>
-                    <label>Password:</label>
+                <div class="input-group">
+                    <label for="password">Password:</label>
                     {{ form.password }}
                 </div>
 
-                <input type="submit" value="Sign Up">
+                <input type="submit" value="Sign Up" class="submit-button">
             </form>
-        </div>
     </div>
 </body>
 </html>

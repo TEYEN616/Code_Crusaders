@@ -5,22 +5,24 @@
 
 </head>
 <body>
-    <h1>Highscores</h1>
-    <table>
-        <tr>
-            <th>Benutzername</th>
-            <th>Höchster Punktestand</th>
-        </tr>
-        {% for username, max_score in high_scores %}
+    <div class="quiz-container">
+        <h1>Highscores</h1>
+        <table>
             <tr>
-                <td>{{ username }}</td>
-                <td>{{ max_score }}</td>
+                <th>Benutzername</th>
+                <th>Höchster Punktestand</th>
             </tr>
-        {% endfor %}
-    </table>
-    <form action="/homepage" method="get">
-        <button type="submit">Homepage</button>
-    </form>
+            {% for username, max_score in high_scores %}
+                <tr>
+                    <td>{{ username }}</td>
+                    <td>{{ max_score }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <form action="/homepage" method="get" >
+            <button type="submit" class="submit-button">Homepage</button>
+        </form>
+    </div>
 </body>
 
 </html>

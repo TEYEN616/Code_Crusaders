@@ -2,37 +2,31 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="../static/css/style1.css">
+        <link rel="stylesheet" type="text/css" href="../static/css/style.css">
         
     </head>
 
     <body>
     
-        <div class="navigation">
-            <div class="login-container">
-        
-                <h1>
+        <div class="quiz-container">
+                <h1> Log In</h1>
                     <form action="{{ url_for('logIn') }}" method="POST">
                         {{ form.csrf_token }}
                     
-                        <div>
-                            <label>Username:</label>
+                        <div class="input-group">
+                            <label for="username">Username:</label>
                             {{ form.username }}
                         </div>
-                        <div>
-                            <label>Password:</label>
+                        <div class="input-group">
+                            <label for="password">Password:</label>
                             {{ form.password }}
                         </div>
 
-                        <input type="submit" value="Log In">
-
-                    <div>
-                        <a href="{{ url_for('signup') }}" class="signup-link">Sign Up</a>
-                    </div>
-                    
+                        <input type="submit" value="Log In" class="submit-button">
                     </form>
-                </h1>
-            </div>
+                    <div class="signup-link">
+                        Dont't you have an account? <a href="{{ url_for('signup') }}">Sign Up</a>
+                    </div>
         </div>
     </body>    
     

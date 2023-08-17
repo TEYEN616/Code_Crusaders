@@ -54,6 +54,10 @@ body {
     background-color: #e0e0e0; 
 }
 
+.answer-option input[type="radio"] {
+    display: none;
+}
+
 .custom-radio {
     width: 18px;
     height: 18px;
@@ -98,4 +102,37 @@ button {
     border-radius: 5px;
     cursor: pointer;
     margin: 5px;
+}
+
+.signup-link{
+    margin-top:15px;
+    font-size: 16px;
+    color: #0b3d91;
+}
+
+.signup-link a{
+    color: #ff9a1a;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.signup-link a:hover{
+    color:#e0e0e0;
+}
+
+.input-group{
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+}
+
+.input-group label{
+    font-size: 18px;
+    margin-top: 5px;
+}
+
+.input-group input{
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 16px;
 }

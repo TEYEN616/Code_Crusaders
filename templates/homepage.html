@@ -2,20 +2,21 @@
 <html>
 <head>
     <title>Quiz Homepage</title>
-    <link rel="stylesheet" type="text/css" href="../static/css/homepage.css"> 
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css"> 
 </head>
 <body>
-    <div class="container"> 
+    <div class="quiz-container"> 
         <h1>Welcome to the Quiz Homepage</h1>
-        <form action="/gkquiz" method="get">
-            <button type="submit">General Knowledge Quiz</button>
-        </form>
-        <form action="/quiz" method="get">
-            <button type="submit">Rush Quiz</button>
-        </form>
-        <form action="/highscores" method="get">
-            <button type="submit">Highscores</button>
-        </form>
+<form action="/gkquiz" method="get" class="quiz-form">
+    <button type="submit" class="submit-button">General Knowledge Quiz</button>
+</form>
+<form action="/quiz" method="get" class="quiz-form">
+    <button type="submit" class="submit-button">Rush Quiz</button>
+</form>
+<form action="/highscores" method="get" class="quiz-form">
+    <button type="submit" class="submit-button">Highscores</button>
+</form>
+
     </div>
 </body>
 </html>
