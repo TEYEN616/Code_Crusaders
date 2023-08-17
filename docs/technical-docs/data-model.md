@@ -12,7 +12,7 @@ Tim Hötzel
 
 # Data model
 
-## User related Tables 
+## Quiz Tables 
 
 **Questions Table:**
 
