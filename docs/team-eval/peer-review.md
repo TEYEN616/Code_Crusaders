@@ -4,10 +4,13 @@ parent: Team Evaluation
 nav_order: 3
 ---
 
-[Jane Dane]
+Tim Hötzel
 {: .label }
 
-# [Peer review]
+Anton Wagg
+{: .label }
+
+# Peer review
 {: .no_toc }
 
 <details open markdown="block">

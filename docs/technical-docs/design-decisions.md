@@ -10,9 +10,6 @@ Tim Hötzel
 # Design decisions
 
 ## 01: First Ideas
-
-
-
 Status
 : **Work in progress** 
 
@@ -40,10 +37,17 @@ It is supposed to reflect "clouds" and the "sky". on the game side the clouds ar
 
 ## 02: Final Design
 
-We haven't thought about our design for a long time. When we wanted to start at that point, we didn't like the stand. We opted for a much simpler design.
+
+Status
+: **Complete** 
+
+Updated
+: 18.08.2023
 
 ![Alt text](../assets/images/login.JPG)
 
 ![Alt text](../assets/images/generalKnowlage.JPG)
 
-These two design examples show what our design looks like. We wanted to keep it simple and stick to one design and relieve ourselves of the work on this point as well.
+### Reasoning / Intention
+We haven't thought about our design for a long time. When we wanted to start at that point, we didn't like the stand. We opted for a much simpler design.
+These two design examples show what our design looks like. We wanted to keep it simple and stick to one design and relieve ourselves of the work on this point.

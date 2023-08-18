@@ -4,7 +4,10 @@ has_children: true
 nav_order: 2
 ---
 
-[Jane Dane]
+Tim Hötzel
 {: .label }
 
-# [Technical documentation]
+Anton Wagg
+{: .label }
+
+# Technical documentation
