@@ -12,13 +12,13 @@ Tim Hötzel
 
 # Summary of individual contributions
 
-Difficult to say, we've been collaborating a lot on Discord and also coding together also patching and researching each other
+Difficult to say, we've been collaborating a lot on Discord and also coding together. Though we have In addition also patching and researching each other (umschreibe bedürftig)
 
 ## Anton Wagg
 
-Contributions: Login/Register & Highscore & CSS (Quiz Design)
+Contributions: Login and Signup process & Highscore & CSS (Quiz Design)
 
 
 ## Tim Hötzel
 
-Contributions: Gameloop & tamplates & Timer & first Design (old Login)
+Contributions: Gameloop & templates & Timer & first Design (old Login)

@@ -23,7 +23,7 @@ Tim Hötzel
 ├── requirements.txt
 ├── README.txt
 ├── .gitignore
-├── quiz.db
+├── quiz.db (drin lassen oder mit reinnehmen ?)
 ├── static/
 │   ├── css/
 │       └── style.css
