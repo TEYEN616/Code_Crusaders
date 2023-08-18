@@ -12,33 +12,32 @@ Tim Hötzel
 
 # App structure
 
-![Alt text](../assets/images/storyboard.JPG)
-
 ## File Organisation
 
+<pre><code>ProjectDirectory/
+│
+├── app.py
+├── app.py
+├── db.py
+├── fragen.py
+├── requirements.txt
+├── README.txt
+├── .gitignore
+├── quiz.db
+├── static/
+│   ├── css/
+│       └── style.css
+└── templates/
+    ├── login-page.html
+    ├── signup.html
+    ├── homepage.html
+    ├── quiz.html
+    ├── gkQuiz.html
+    └── highscores.html
 
-> 
-> ┬ webapp/
-> ├─ app.py
-> ├─┬ .vscode/ 
-> │ ├── launch.json
-> │ └── settings.json
-> ├─┬ .vscode/
-> ├─┬ venv/                <-- Python Virtual Environment folder
-> │ ├── Include/
-> │ ├─┬ Lib/
-> │ │ └─┬ site-packages/
-> │ │   ├── flask/         <-- Flask package sourced via pip
-> │ │   ├── jinja2/
-> │ │   └── …
-> │ ├── Scripts/
-> │ └── …
-> ├─ app.py                <-- Your main application module
-> ├─ db.py
-└─ db.py
+</code></pre>
 
 ## Login/ Register
-It is possible to register, the registration data is stored in a database which the login accesses to check whether a user exists.
 
 ## GeneralKnowledge
 The general knowledge mode offers questions from various subject areas and is used to improve general knowledge. There is no timer and correct questions are not counted as points.

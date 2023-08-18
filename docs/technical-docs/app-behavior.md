@@ -19,6 +19,7 @@ nav_order: 2
 {:toc}
 </details>
 
+![Alt text](../assets/images/storyboard.JPG)
 ## Sign-Up and Log-In
 The 'app.py'-file covers the implementation of both the user registration and the log in. The 'LoginForm' and 'SignUpForm' define 
 ---

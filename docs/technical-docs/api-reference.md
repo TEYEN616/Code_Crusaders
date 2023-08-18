@@ -79,7 +79,7 @@ Shows a few buttons as a subject selection
 
 **Sample output:**
 
-Two buttons with Rush and General Knowlage
+Two buttons with Rush and General Knowledge
 
 
 ## Quiz / Rush
