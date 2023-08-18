@@ -12,3 +12,12 @@ callouts:
   attention:
     title: ❕ Attention
     color: yellow
+
+# GitHub Pages-Einstellungen
+defaults:
+  - scope:
+      path: ""         # Für Markdown-Dateien im Wurzelverzeichnis
+      type: "docs"     # Oder entsprechend deiner Ordnerstruktur
+    values:
+      layout: single
+      author_profile: true
