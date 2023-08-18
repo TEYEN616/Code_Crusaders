@@ -3,7 +3,8 @@
 This repository contains the ressources about our  web-based Quiz application:
 
 + Complete code for errorless interaction
-+ Documentation page about the whole project
++ Documentation page about the whole project (https://teyen616.github.io/Code_Crusaders)
++ Presentation [CodeCrusader](Presentation/CodeCrusader_Presentation.pdf)
 
 ## Steps to execute the code
 

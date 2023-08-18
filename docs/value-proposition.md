@@ -17,9 +17,11 @@ Tim Hötzel
 **Flexible Learning**
 - Learning should not be limited to the classroom. Our quiz web app is accessible anytime, anywhere, so students can learn at their own pace and in comfort.
 
-**Challenges and Competition**
+**Challenges And Competition**
 - The high score motivates the player to try harder and also to outbid his friends. It is also a confirmation that you are making progress in learning, for example.
 
+**Share Our Enthusiasm**
+- After we decided that we wanted to create a quiz app, it was already clear to us that we both have a passion for it and occasionally play against each other. We want to pass on this enthusiasm.
 
 # Buyer Persona
 
