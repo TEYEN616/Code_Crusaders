@@ -10,16 +10,10 @@ nav_order: 0
 
 ### Anton Wagg
 
-About
-: 
-
 Matr.-Nr.
 : 77211922378
 
 ### Tim Hötzel
-
-About
-: 
 
 Matr.-Nr.
 : 77211919611

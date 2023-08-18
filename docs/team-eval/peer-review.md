@@ -11,16 +11,6 @@ Anton Wagg
 {: .label }
 
 # Peer review
-{: .no_toc }
-
-<details open markdown="block">
-  <summary>
-    Table of contents
-  </summary>
-  {: .text-delta }
-- TOC
-{:toc}
-</details>
 
 ## Tim - review 
 
@@ -41,10 +31,10 @@ I liked working with him very much, but from the top of my head, other than keep
 ## Anton - review 
 
 ### My observation (Wahrnehmung)
-
+Anton was always very open to my ideas and made it clear when he had suggestions for changes. Our collaboration was goal-oriented and, above all, very flexible thanks to Anton, even though he went to Australia. He did more than was often agreed and contributed his ideas.
 
 ### Effect on me (Wirkung)
-[What positive or negative effect did this observation have on the reviewer?]
+Even though there were times when we both didn't actively work on our project, I never had the feeling that we couldn't make it. I really enjoyed working with him and would do it again.
 
 ### Tip for the future (Wunsch)
-[What should be changed or strengthened for the point of view of the reviewer? ]
+He could rely a little more on his skills. He doesn't need to be nervous, the plan works with him without any problems. That's all

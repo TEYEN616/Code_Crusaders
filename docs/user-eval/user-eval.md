@@ -3,45 +3,44 @@ title: User Evaluation
 nav_order: 3
 ---
 
-[Jane Dane]
+Anton Wagg
 {: .label }
 
+Tim Hötzel 
+{: .label .label-green }
+
 # [User evaluation]
-{: .no_toc }
 
-<details open markdown="block">
-  <summary>
-    Table of contents
-  </summary>
-  {: .text-delta }
-- TOC
-{:toc}
-</details>
 
-## 01: [Title]
+## 01: Login/ SignUp
 
-### Meta
-
-Status
-: **Work in progress** - Done - Obsolete
-
-Updated
-: DD-MMM-YYYY
 
 ### Goal
 
-[Describe the goal of this evaluation, for example as a research question like: "How long does it take to register a new account and what is the drop-out rate?"]
+The goal of this evaluation is to assess the efficiency of the registration process within the quiz application.
 
 ### Method
 
-[Describe how you proceed to achieve your evaluation goal. Be as specific as possible: others should be able to replicate your evaluation by following the description on this section.]
+To achieve the evaluation goal, we followed these steps:
+
+**User Registration** Time: We tracked the time taken by users to complete the registration process, from entering their credentials to submitting the registration form.
+
+Drop-Out Rate: We we estimate the drop-out rate at different stages of the registration process, aiming to identify points where users abandon the registration.
 
 ### Results
 
-[Present the main results of your evaluation, for example: "On average, users need 3 min to register. The drop-out rate was 70%. Users that didn't complete provided the following reasons: ..."]
+Our evaluation produced the following key results:
 
-### Implications
+Average Registration Time: The average time taken by users to complete the registration process was approximately 2 minutes.
 
-[What did you learn from this evaluation and what will you change to improve? Example: "We aim to decrease the drop-out rate by not asking for a birth date. We will re-run this evaluation to measure the impact."]
+We can imagine that the drop out rate is definitely there due to our non-existent email verification. It conveys a feeling of insecurity because it is a standard process nowadays.
+
+### Implications (Theoretically)
+
+Based on the evaluation results, we have identified several implications for improving the registration process and user engagement:
+
+E-Mail Verification: To address the drop-out rate at the email verification stage, we will implement user verification to ensure delivery of verification E-Mails.
+
+Alternative Verification Methods: Based on today's standards, we could also add SMS verification, which would appeal to even more users
 
 ---

@@ -7,9 +7,9 @@ nav_order: 4
 Tim Hötzel 
 {: .label .label-green }
 
-# API reference
+# API reference Index Screenshots hinzufügen
 
-## Navigation / Index
+## Navigation  
 
 ### `index()`
 
@@ -34,10 +34,11 @@ Tim Hötzel
 
 **Sample output:**
 Shows the login screen with input fields for the registration and a SignUp button.
+![Alt text](../assets/images/login.JPG)
 
 
 
-## Login / Register
+## Login / Sign Up
 
 ### `signup()`
 
@@ -45,29 +46,13 @@ Shows the login screen with input fields for the registration and a SignUp butto
 
 **Methods:** `POST` `GET`
 
-**Purpose:** [Short explanation of what the function does and why]
+**Purpose:** Non-existing users can register and then log in. User data is stored in the database.
 
 **Sample output:**
-
 Shows a registration form.
+![Alt text](../assets/images/signUp.jpg)
 
-
-## Navigation / Subjects
-
-### `homepage_subjects()`
-
-**Route:** `/homepage_subjects`
-
-**Methods:** `POST` `GET`
-
-**Purpose:** (Select subjects for specific learning)
-
-**Sample output:**
-
-Shows a few buttons as a subject selection
-
-
-## Navigation / Mode selection
+## Navigation / Homepage
 
 ### `homepage()`
 
@@ -78,8 +63,8 @@ Shows a few buttons as a subject selection
 **Purpose:** Choice between the two implemented game modes
 
 **Sample output:**
-
 Two buttons with Rush and General Knowledge
+![Alt text](../assets/images/homepage.jpg)
 
 
 ## Quiz / Rush
@@ -93,8 +78,8 @@ Two buttons with Rush and General Knowledge
 **Purpose:** gameloop
 
 **Sample output:**
-
 Shows a question, timer, score, answer button and whether the question was answered correctly or incorrectly.
+![Alt text](../assets/images/rush.jpg)
 
 
 ## Quiz / General knowlage
@@ -108,9 +93,8 @@ Shows a question, timer, score, answer button and whether the question was answe
 **Purpose:** gameloop
 
 **Sample output:**
-
 Shows a question, answer button and whether the question was answered correctly or incorrectly.
-
+![Alt text](../assets/images/generalKnowlage.JPG)
 
 ## Highscore
 
@@ -123,7 +107,7 @@ Shows a question, answer button and whether the question was answered correctly 
 **Purpose:** List of high scores
 
 **Sample output:**
-
 Table with user entries and their highest score.
+![Alt text](../assets/images/highscores.jpg)
 
 
