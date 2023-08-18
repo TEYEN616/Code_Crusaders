@@ -28,7 +28,7 @@ Tim Hötzel
 
 **Scores Table:**
 
-| id  | user_id | score | 
+| id  | user_id | score  | 
 | --- | ------- | ------ |
 | int | int     | int    |
 
