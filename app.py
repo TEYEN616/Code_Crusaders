@@ -117,6 +117,7 @@ def quiz():
             else:
                 message = "Falsch!"
         else:  # neu
+            reset_quiz()  # quiz startet wieder von vorne
             save_score(session["user_id"], current_score)
             current_score = 0
             conn.close()
