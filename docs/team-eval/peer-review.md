@@ -19,11 +19,11 @@ nav_order: 3
 {:toc}
 </details>
 
-## [team member] - review 1
+## Tim - review 1
 
 ### My observation (Wahrnehmung)
 
-[A specific observation, regarding know-how, effectiveness, team work or from another relevant area]
+From my point of view Tim, as a collaborator with me in this project was forthcoming with a lot of Ideas. 
 
 ### Effect on me (Wirkung)
 
