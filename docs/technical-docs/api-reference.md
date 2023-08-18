@@ -50,6 +50,7 @@ Shows the login screen with input fields for the registration and a SignUp butto
 
 **Sample output:**
 Shows a registration form.
+
 ![Alt text](../assets/images/signUp.jpg)
 
 ## Navigation / Homepage
