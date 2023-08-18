@@ -3,10 +3,10 @@ title: Value Proposition
 nav_order: 1
 ---
 
-[Anton Wagg]
+Anton Wagg
 {: .label }
 
-[Tim Hötzel]
+Tim Hötzel
 {: .label .label-green }
 
 # Value proposition

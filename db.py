@@ -7,6 +7,7 @@ from flask import current_app, g
 def checkUser(username, password):
         conn = sqlite3.connect("quiz.db")
         cursor = conn.cursor()
+        #DB Anfrage, ob Username und password übereinstimmen
         cursor.execute(
             "SELECT * FROM users WHERE username= ? AND password= ?",
             (username, password),
@@ -39,7 +40,6 @@ def reset_quiz():
     cursor.execute("UPDATE questions SET answered = 0")
     conn.commit()
 
-    # Verbindung zur Datenbank schließen
     conn.close()
 
 
@@ -75,6 +75,7 @@ def getUnansweredQuestions():
     conn = sqlite3.connect("quiz.db")
     cursor = conn.cursor()
 
+    #
     cursor.execute("SELECT * FROM questions WHERE answered = 0")
     conn.commit()
     

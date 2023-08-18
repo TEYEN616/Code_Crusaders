@@ -5,7 +5,7 @@ nav_order: 2
 ---
 
 Tim Hötzel
-{: .label }
+{: .label .label-green }
 
 Anton Wagg
 {: .label }

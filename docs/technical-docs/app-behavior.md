@@ -4,8 +4,11 @@ parent: Technical Docs
 nav_order: 2
 ---
 
-[Jane Dane]
+Anton Wagg
 {: .label }
+
+Tim Hötzel
+{: .label .label-green }
 
 # App behavior
 {: .no_toc }
