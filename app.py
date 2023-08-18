@@ -1,12 +1,21 @@
-import random
+import operator
 import sqlite3
 
 from flask import Flask, redirect, render_template, request, session, url_for
 from flask_wtf import FlaskForm
 from wtforms.fields import EmailField, PasswordField, StringField, SubmitField
-from wtforms.validators import DataRequired, Email, EqualTo, InputRequired, Length
+from wtforms.validators import DataRequired, InputRequired, Length
 
-from db import insert_user, reset_quiz, save_score
+from db import (
+    checkUser,
+    getHighscores,
+    getNextQuestion,
+    getQuestion,
+    getUnansweredQuestions,
+    insert_user,
+    reset_quiz,
+    save_score,
+)
 
 app = Flask(__name__)
 app.secret_key = "34"
@@ -51,16 +60,7 @@ def logIn():
     ):  # wird ausgeführt wenn man auf den log in button drückt
         username = request.form.get("username")
         password = request.form.get("password")
-        # daten aus der Datenbank holen
-        conn = sqlite3.connect("quiz.db")
-        cursor = conn.cursor()
-        cursor.execute(
-            "SELECT * FROM users WHERE username= ? AND password= ?",
-            (username, password),
-        )
-        user = cursor.fetchone()
-        conn.close()
-
+        user = checkUser(username, password)
         if user:
             session["user_id"] = user[0]  # user id in session speichern
             session.permanent = True
@@ -108,8 +108,7 @@ def quiz():
             user_answer = request.form["answer"]
 
             # Frage aus der Datenbank abrufen
-            cursor.execute("SELECT * FROM questions WHERE id = ?", (question_id,))
-            question = cursor.fetchone()
+            question = getQuestion(question_id)
 
             if question and user_answer == str(question[6]):
                 message = "Richtig!"
@@ -126,8 +125,7 @@ def quiz():
         message = None
 
     # alle unbeantworteten Fragen aus der Datenbank abrufen
-    cursor.execute("SELECT * FROM questions WHERE answered = 0")
-    questions = cursor.fetchall()
+    questions = getUnansweredQuestions()
 
     if not questions:
         # Alle Fragen wurden beantwortet, das Quiz startet von vorne
@@ -139,14 +137,7 @@ def quiz():
 
         return redirect("/highscores")  # Weiterleitung zur highscore seite
 
-    # Eine zufällige Frage auswählen
-    question = random.choice(questions)
-
-    # Frage als beantwortet markieren
-    cursor.execute("UPDATE questions SET answered = 1 WHERE id = ?", (question[0],))
-    conn.commit()
-
-    conn.close()
+    question = getNextQuestion(questions)
 
     return render_template(
         "quiz.html", question=question, message=message, score=current_score
@@ -164,9 +155,8 @@ def gkquiz():
         print("Form submitted.")
         question_id = request.form["question_id"]
         user_answer = request.form["answer"]
-        # Frage aus der Datenbank abrufen
-        cursor.execute("SELECT * FROM questions WHERE id = ?", (question_id,))
-        question = cursor.fetchone()
+
+        question = getQuestion(question_id)
 
         if question and user_answer == str(question[6]):
             message = "Richtig!"
@@ -175,30 +165,15 @@ def gkquiz():
     else:
         message = None
 
-    # Alle unbeantworteten Fragen aus der Datenbank abrufen
-    cursor.execute("SELECT * FROM questions WHERE answered = 0")
-    questions = cursor.fetchall()
+    questions = getUnansweredQuestions()
 
     if not questions:
         # Alle Fragen wurden beantwortet, das Quiz startet von vorne
         reset_quiz()
 
-        # Punktestand auf 0 zurücksetzen
-        cursor.execute("UPDATE scores SET score = 0")
-        conn.commit()
-
-        conn.close()
-
         return redirect("/homepage")
 
-    # Eine zufällige Frage auswählen, falls es unbeantwortete Fragen gibt
-    question = random.choice(questions)
-
-    # Frage als beantwortet markieren
-    cursor.execute("UPDATE questions SET answered = 1 WHERE id = ?", (question[0],))
-    conn.commit()
-
-    conn.close()
+    question = getNextQuestion(questions)
 
     return render_template("gkQuiz.html", question=question, message=message)
 
@@ -206,16 +181,10 @@ def gkquiz():
 # Anzeigen der höchsten Punktzahl
 @app.route("/highscores", methods=["GET"])
 def highscores():
-    conn = sqlite3.connect("quiz.db")
-    cursor = conn.cursor()
-
-    # Höchste Punktestände für jeden Benutzer abrufen
-    cursor.execute(
-        "SELECT username, MAX(score) FROM users JOIN scores ON users.id = scores.user_id GROUP BY users.id"
-    )
-    high_scores = cursor.fetchall()
-
-    conn.close()
+    # highscores aus der db holen
+    high_scores = getHighscores()
+    # score speichern in absteigender Reihenfolge
+    high_scores.sort(key=operator.itemgetter(1), reverse=True)
 
     return render_template("highscores.html", high_scores=high_scores)
 
